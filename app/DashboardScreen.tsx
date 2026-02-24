@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { HeaderBar } from "../components/HeaderBar";
 import { HotelPicker } from "../components/HotelPicker";
@@ -11,6 +11,7 @@ import { useTheme } from "../contexts/ThemeContext";
 import { useAsync } from "../hooks/useAsync";
 import { getDashboard } from "../services/api/dashboard";
 import { MaterialIcons } from "@expo/vector-icons";
+import { openHotelDetailScreen, openTabScreen } from "../services/navigation/appNavigation";
 import { formatCurrency, formatDateLabel } from "../utils/format";
 import { styles } from "../styles/app/DashboardScreen.styles";
 
@@ -28,7 +29,8 @@ const formatTrend = (value: unknown, fallback: number) => {
 export default function DashboardScreen() {
   const { token, user } = useAuth();
   const { colors } = useTheme();
-  const { organizations, hotels, organizationId, hotelId, setOrganizationId, setHotelId, loadingOrgs, loadingHotels, showOrganizationPicker } = useHotel();
+  const { organizations, hotels, organizationId, hotelId, setOrganizationId, setHotelId, loadingOrgs, loadingHotels, showOrganizationPicker, isAdmin, isOwner } = useHotel();
+  const [chartWidth, setChartWidth] = useState(0);
   const { data } = useAsync(() => (token ? getDashboard(token, hotelId ? { hotelId } : {}) : null), [token, hotelId], { enabled: !!token, cacheKey: token ? `dashboard:${token}:${hotelId || "all"}` : null });
   const overview = useMemo(() => data?.data?.overview || data?.overview || {}, [data]);
   const metric = useMemo(
@@ -44,19 +46,50 @@ export default function DashboardScreen() {
     }),
     [overview],
   );
+  const canViewAllProperties = isAdmin || isOwner;
+  const trendValues = useMemo(() => {
+    const raw =
+      overview?.weeklyRevenue ||
+      overview?.revenueTrend ||
+      overview?.trend ||
+      overview?.revenueByDay ||
+      [];
+    if (!Array.isArray(raw) || !raw.length) return [12, 17, 21, 16, 25, 14, 22];
+    const nums = raw
+      .map((item: any) => (typeof item === "number" ? item : Number(item?.value ?? item?.amount ?? item)))
+      .filter((item: number) => Number.isFinite(item));
+    return nums.length >= 4 ? nums.slice(-7) : [12, 17, 21, 16, 25, 14, 22];
+  }, [overview]);
+  const points = useMemo(() => {
+    if (!chartWidth) return [];
+    const chartHeight = 86;
+    const min = Math.min(...trendValues);
+    const max = Math.max(...trendValues);
+    const span = max - min || 1;
+    const padding = 10;
+    return trendValues.map((value, index) => {
+      const x = padding + (index / Math.max(1, trendValues.length - 1)) * (chartWidth - padding * 2);
+      const y = chartHeight - ((value - min) / span) * (chartHeight - 16) - 8;
+      return { x, y, value };
+    });
+  }, [trendValues, chartWidth]);
 
   return (
     <ScrollView style={styles.scroll} contentContainerStyle={styles.container}>
       <HeaderBar title="Portfolio Overview" subtitle={`Updated ${formatDateLabel()}`} avatarUri={user?.avatar} icon="analytics">
         <View style={[styles.selectorCard, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}>
-          <TouchableOpacity
-            style={[styles.selectorBtn, { backgroundColor: !hotelId ? colors.primary : "transparent" }]}
-            onPress={() => setHotelId(null)}
-          >
-            <MaterialIcons name="hub" size={16} color={!hotelId ? "#fff" : colors.textMuted} />
-            <Text style={[styles.selectorText, { color: !hotelId ? "#fff" : colors.textMuted }]}>All Properties</Text>
-          </TouchableOpacity>
-          <View style={[styles.selectorDivider, { backgroundColor: colors.border }]} />
+          {canViewAllProperties ? (
+            <>
+              <TouchableOpacity
+                style={[styles.selectorBtn, { backgroundColor: !hotelId ? colors.primary : "transparent" }]}
+                onPress={() => setHotelId(null)}
+              >
+                <MaterialIcons name="hub" size={16} color={!hotelId ? "#fff" : colors.textMuted} />
+                <Text style={[styles.selectorText, { color: !hotelId ? "#fff" : colors.textMuted }]}>All Properties</Text>
+              </TouchableOpacity>
+              <View style={[styles.selectorDivider, { backgroundColor: colors.border }]} />
+            </>
+          ) : null}
           <View style={styles.selectorPicker}>
             {showOrganizationPicker ? (
               <HotelPicker
@@ -95,14 +128,34 @@ export default function DashboardScreen() {
               <Text style={[styles.rangeText, { color: colors.textMuted }]}>1Y</Text>
             </View>
           </View>
-          <View style={[styles.chartArea, { backgroundColor: colors.surfaceMuted }]}>
-            <View style={[styles.curveOne, { backgroundColor: colors.primary }]} />
-            <View style={[styles.curveTwo, { backgroundColor: colors.primary }]} />
-            <View style={[styles.curveThree, { backgroundColor: colors.primary }]} />
-            <View style={[styles.curveFour, { backgroundColor: colors.primary }]} />
-            <View style={[styles.curveFive, { backgroundColor: colors.primary }]} />
+          <View style={[styles.chartArea, { backgroundColor: colors.surfaceMuted }]} onLayout={(event) => setChartWidth(event.nativeEvent.layout.width)}>
+            {points.slice(0, -1).map((point, index) => {
+              const next = points[index + 1];
+              const dx = next.x - point.x;
+              const dy = next.y - point.y;
+              const length = Math.sqrt(dx * dx + dy * dy);
+              const angle = Math.atan2(dy, dx);
+              return (
+                <View
+                  key={`segment-${index}`}
+                  style={[
+                    styles.lineSegment,
+                    {
+                      left: (point.x + next.x) / 2 - length / 2,
+                      top: (point.y + next.y) / 2 - 1,
+                      width: length,
+                      backgroundColor: colors.primary,
+                      transform: [{ rotateZ: `${angle}rad` }],
+                    },
+                  ]}
+                />
+              );
+            })}
+            {points.map((point, index) => (
+              <View key={`point-${index}`} style={[styles.point, { left: point.x - 3, top: point.y - 3, backgroundColor: colors.primary }]} />
+            ))}
             <View style={[styles.peakTag, { backgroundColor: colors.text }]}>
-              <Text style={styles.peakText}>Peak: {formatCurrency(metric.revenue * 0.15 || 18400)}</Text>
+              <Text style={styles.peakText}>Peak: {formatCurrency(Math.max(...trendValues) * 1000)}</Text>
             </View>
           </View>
           <View style={styles.weekRow}>
@@ -116,7 +169,21 @@ export default function DashboardScreen() {
       </View>
 
       <View style={styles.section}>
-        <SectionTitle title="Hotels Performance" action="View All" />
+        <SectionTitle
+          title="Hotels Performance"
+          action="View All"
+          onActionPress={() => {
+            if (hotels.length === 1) {
+              const only = hotels[0];
+              const onlyId = String(only?.hotelId || only?._id || "");
+              if (onlyId) {
+                openHotelDetailScreen(onlyId);
+                return;
+              }
+            }
+            openTabScreen("hotels");
+          }}
+        />
         <View style={styles.hotelList}>
           {hotels.length ? (
             hotels.slice(0, 8).map((hotel: any) => (
@@ -125,6 +192,7 @@ export default function DashboardScreen() {
                 name={hotel?.name}
                 location={hotel?.address?.city || hotel?.address?.state || "No location"}
                 image={hotel?.coverImage}
+                onPress={() => openHotelDetailScreen(String(hotel?.hotelId || hotel?._id || ""))}
               />
             ))
           ) : (
