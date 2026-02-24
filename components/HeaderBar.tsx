@@ -27,7 +27,7 @@ export function HeaderBar({
   avatarUri,
   children,
   icon,
-  showThemeToggle = false,
+  showThemeToggle = true,
   showNotificationIcon = true,
 }: Props) {
   const { colors } = useTheme();

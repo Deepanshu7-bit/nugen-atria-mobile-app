@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { getHotelsForDropdown } from "../services/api/hotels";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { getHotelsForListing } from "../services/api/hotels";
 import { getOrganizations } from "../services/api/organizations";
 import { useAuth } from "./AuthContext";
 
@@ -12,6 +12,7 @@ type HotelValue = {
   setHotelId: (id?: string | null) => void;
   loadingOrgs: boolean;
   loadingHotels: boolean;
+  refreshHotels: () => Promise<void>;
   isAdmin: boolean;
   isOwner: boolean;
   isManager: boolean;
@@ -53,6 +54,7 @@ export function HotelProvider({ children }: { children: React.ReactNode }) {
   const [hotelId, setHotelIdState] = useState<string | null>(null);
   const [loadingOrgs, setLoadingOrgs] = useState(false);
   const [loadingHotels, setLoadingHotels] = useState(false);
+  const hotelsCacheRef = useRef<Record<string, any[]>>({});
   const role = String(user?.role || "").toLowerCase();
   const userOrganizationId = toId(user?.organizationId) || null;
   const userHotelId = toId(user?.hotelId) || null;
@@ -82,17 +84,31 @@ export function HotelProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!token) return;
     let active = true;
-    setLoadingHotels(true);
 
     const scopedOrganizationId = organizationId || userOrganizationId || null;
-    getHotelsForDropdown(token, scopedOrganizationId)
+    const cacheKey = scopedOrganizationId || "all";
+    const cached = hotelsCacheRef.current[cacheKey];
+    const applyHotels = (list: any[]) => {
+      if (!active) return;
+      setHotels(list);
+      const selected = hotelId || userHotelId;
+      const hasSelected = selected && list.some((item: any) => pickHotelId(item) === selected);
+      if (!hasSelected) setHotelIdState(pickHotelId(list[0]) || userHotelId || null);
+    };
+
+    if (Array.isArray(cached) && cached.length) {
+      applyHotels(cached);
+      return () => {
+        active = false;
+      };
+    }
+
+    setLoadingHotels(true);
+    getHotelsForListing(token, scopedOrganizationId, { page: 1, limit: 20 })
       .then((response) => {
-        if (!active) return;
         const list = extractHotels(response);
-        setHotels(list);
-        const selected = hotelId || userHotelId;
-        const hasSelected = selected && list.some((item: any) => pickHotelId(item) === selected);
-        if (!hasSelected) setHotelIdState(pickHotelId(list[0]) || userHotelId || null);
+        hotelsCacheRef.current[cacheKey] = list;
+        applyHotels(list);
       })
       .catch(() => {
         if (!active) return;
@@ -104,7 +120,28 @@ export function HotelProvider({ children }: { children: React.ReactNode }) {
     return () => {
       active = false;
     };
-  }, [token, organizationId, userOrganizationId, userHotelId, hotelId]);
+  }, [token, organizationId, userOrganizationId, userHotelId]);
+
+  const refreshHotels = useCallback(async () => {
+    if (!token) return;
+    const scopedOrganizationId = organizationId || userOrganizationId || null;
+    const cacheKey = scopedOrganizationId || "all";
+    setLoadingHotels(true);
+    try {
+      const response = await getHotelsForListing(token, scopedOrganizationId, { page: 1, limit: 20 });
+      const list = extractHotels(response);
+      hotelsCacheRef.current[cacheKey] = list;
+      setHotels(list);
+      const selected = hotelId || userHotelId;
+      const hasSelected = selected && list.some((item: any) => pickHotelId(item) === selected);
+      if (!hasSelected) setHotelIdState(pickHotelId(list[0]) || userHotelId || null);
+    } catch {
+      setHotels([]);
+      setHotelIdState(null);
+    } finally {
+      setLoadingHotels(false);
+    }
+  }, [token, organizationId, userOrganizationId, hotelId, userHotelId]);
 
   const isSuperAdmin = role.includes("super");
   const isAdmin = role.includes("admin") || isSuperAdmin;
@@ -124,6 +161,7 @@ export function HotelProvider({ children }: { children: React.ReactNode }) {
       setHotelId: (id?: string | null) => setHotelIdState(id ? String(id) : null),
       loadingOrgs,
       loadingHotels,
+      refreshHotels,
       isAdmin,
       isOwner,
       isManager,
@@ -131,7 +169,7 @@ export function HotelProvider({ children }: { children: React.ReactNode }) {
       canCreateOrganization: isAdmin || isSuperAdmin,
       showOrganizationPicker: !isManager,
     }),
-    [organizations, hotels, organizationId, hotelId, loadingOrgs, loadingHotels, isAdmin, isOwner, isManager, isSuperAdmin],
+    [organizations, hotels, organizationId, hotelId, loadingOrgs, loadingHotels, refreshHotels, isAdmin, isOwner, isManager, isSuperAdmin],
   );
 
   return <HotelContext.Provider value={value}>{children}</HotelContext.Provider>;

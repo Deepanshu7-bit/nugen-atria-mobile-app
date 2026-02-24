@@ -1,7 +1,7 @@
 import { apiRequest } from "./client";
 
 export const getHotelsForDropdown = async (token, organizationId, params = {}) => {
-  const baseParams = organizationId ? { isAll: 1, organizationId } : { page: 1, limit: 20 };
+  const baseParams = organizationId ? { organizationId, page: 1, limit: 20 } : { page: 1, limit: 20 };
 
   return apiRequest({
     endpoint: "/hotels",
@@ -12,7 +12,7 @@ export const getHotelsForDropdown = async (token, organizationId, params = {}) =
 
 export const getHotelsForListing = async (token, organizationId, params = {}) => {
   const baseParams = organizationId
-    ? { organizationId }
+    ? { organizationId, page: 1, limit: 20 }
     : { page: 1, limit: 20 };
 
   return apiRequest({

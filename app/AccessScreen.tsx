@@ -24,6 +24,7 @@ export default function AccessScreen() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [editingRole, setEditingRole] = useState<any>(null);
+  const [readOnlyRole, setReadOnlyRole] = useState(false);
 
   const { data, refresh } = useAsync(
     () => (token && hotelId ? getRolesByHotel(token, hotelId) : null),
@@ -53,7 +54,7 @@ export default function AccessScreen() {
             placeholderTextColor={colors.textMuted}
             style={[styles.search, { color: colors.text, borderColor: colors.border, backgroundColor: colors.surface }]}
           />
-          <TouchableOpacity style={[styles.addButton, { backgroundColor: colors.primary }]} onPress={() => { setEditingRole(null); setOpen(true); }}>
+          <TouchableOpacity style={[styles.addButton, { backgroundColor: colors.primary }]} onPress={() => { setEditingRole(null); setReadOnlyRole(false); setOpen(true); }}>
             <MaterialIcons name="add" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -63,19 +64,37 @@ export default function AccessScreen() {
         {hotelId ? <SectionTitle title="Roles" action={`${filtered.length} total`} /> : null}
 
         {hotelId && filtered.length ? (
-          filtered.map((role: any) => (
-            <TouchableOpacity
-              key={role?.roleId || role?._id || role?.name}
-              style={[styles.card, { borderColor: colors.cardBorder, backgroundColor: colors.card }]}
-              onPress={() => {
-                setEditingRole({ ...role, roleId: role?.roleId || role?._id });
-                setOpen(true);
-              }}
-            >
-              <Text style={[styles.title, { color: colors.text }]}>{role?.name || "Role"}</Text>
-              <Text style={[styles.meta, { color: colors.textMuted }]}>{role?.description || "No description"}</Text>
-            </TouchableOpacity>
-          ))
+          filtered.map((role: any) => {
+            const normalized = { ...role, roleId: role?.roleId || role?._id };
+            return (
+              <View key={role?.roleId || role?._id || role?.name} style={[styles.card, { borderColor: colors.cardBorder, backgroundColor: colors.card }]}>
+                <Text style={[styles.title, { color: colors.text }]}>{role?.name || "Role"}</Text>
+                <Text style={[styles.meta, { color: colors.textMuted }]}>{role?.description || "No description"}</Text>
+                <View style={styles.actionRow}>
+                  <TouchableOpacity
+                    style={[styles.actionBtn, { backgroundColor: colors.surfaceMuted }]}
+                    onPress={() => {
+                      setEditingRole(normalized);
+                      setReadOnlyRole(true);
+                      setOpen(true);
+                    }}
+                  >
+                    <Text style={[styles.actionText, { color: colors.text }]}>View</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.actionBtn, { backgroundColor: colors.primary }]}
+                    onPress={() => {
+                      setEditingRole(normalized);
+                      setReadOnlyRole(false);
+                      setOpen(true);
+                    }}
+                  >
+                    <Text style={[styles.actionText, { color: "#fff" }]}>Edit</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            );
+          })
         ) : null}
 
         {hotelId && !filtered.length ? <Text style={[styles.empty, { color: colors.textMuted }]}>No roles found.</Text> : null}
@@ -87,6 +106,7 @@ export default function AccessScreen() {
         organizationId={organizationId}
         hotelId={hotelId}
         editingRole={editingRole}
+        readOnly={readOnlyRole}
         onClose={() => setOpen(false)}
         onSaved={() => refresh()}
       />
