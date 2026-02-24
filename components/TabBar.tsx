@@ -25,6 +25,10 @@ export function TabBar({
   addDisabled = false,
 }: Props) {
   const { colors } = useTheme();
+  const middleIndex = Math.ceil((tabs?.length || 0) / 2);
+  const leftTabs = showAddButton ? tabs.slice(0, middleIndex) : tabs;
+  const rightTabs = showAddButton ? tabs.slice(middleIndex) : [];
+
   const renderTab = (tab: Tab) => {
     const isActive = tab.key === activeKey;
     const badge = badges[tab.key];
@@ -34,7 +38,13 @@ export function TabBar({
           <MaterialIcons name={tab.icon} size={22} color={isActive ? colors.primary : colors.textMuted} />
           {badge ? <View style={[styles.badge, { backgroundColor: colors.primary }]} /> : null}
         </View>
-        <Text style={[styles.label, { color: isActive ? colors.primary : colors.textMuted }, isActive && styles.labelActive]}>
+        <Text
+          numberOfLines={1}
+          ellipsizeMode="clip"
+          adjustsFontSizeToFit
+          minimumFontScale={0.72}
+          style={[styles.label, { color: isActive ? colors.primary : colors.textMuted }, isActive && styles.labelActive]}
+        >
           {tab.label}
         </Text>
       </TouchableOpacity>
@@ -43,7 +53,15 @@ export function TabBar({
 
   return (
     <View style={[styles.container, { backgroundColor: colors.card, borderColor: colors.border }, showAddButton && styles.containerWithAdd]}>
-      {tabs.map((tab) => renderTab(tab))}
+      {showAddButton ? (
+        <>
+          <View style={styles.sideGroup}>{leftTabs.map((tab) => renderTab(tab))}</View>
+          <View style={styles.centerGap} />
+          <View style={styles.sideGroup}>{rightTabs.map((tab) => renderTab(tab))}</View>
+        </>
+      ) : (
+        tabs.map((tab) => renderTab(tab))
+      )}
 
       {showAddButton ? (
         <TouchableOpacity
