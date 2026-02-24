@@ -7,8 +7,10 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHotel } from "../contexts/HotelContext";
 import { usePermissions } from "../contexts/PermissionsContext";
 import {
+  registerGoBackHandler,
   registerOpenNotificationsHandler,
   registerOpenProfileHandler,
+  registerOpenTabHandler,
 } from "../services/navigation/appNavigation";
 import DashboardScreen from "./DashboardScreen";
 import HotelsScreen from "./HotelsScreen";
@@ -62,18 +64,37 @@ export default function MainTabs() {
   const { canCreateOrganization, setOrganizationId } = useHotel();
   const { can, hasPermissions } = usePermissions();
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [previousTab, setPreviousTab] = useState("dashboard");
   const [isCreateOpen, setIsCreateOpen] = useState(false);
 
   const tabs = useMemo(() => filterTabsByPermissions(TAB_CONFIG, hasPermissions, can), [hasPermissions, can]);
 
   useEffect(() => {
-    const unregisterNotifications = registerOpenNotificationsHandler(() => setActiveTab("notifications"));
-    const unregisterProfile = registerOpenProfileHandler(() => setActiveTab("settings"));
+    const unregisterNotifications = registerOpenNotificationsHandler(() => {
+      setPreviousTab((prev) => (EXTRA_SCREENS[activeTab] ? prev : activeTab));
+      setActiveTab("notifications");
+    });
+    const unregisterProfile = registerOpenProfileHandler(() => {
+      setPreviousTab((prev) => (EXTRA_SCREENS[activeTab] ? prev : activeTab));
+      setActiveTab("settings");
+    });
+    const unregisterOpenTab = registerOpenTabHandler((tabKey) => {
+      if (!tabKey) return;
+      setPreviousTab((prev) => (EXTRA_SCREENS[activeTab] ? prev : activeTab));
+      setActiveTab(String(tabKey));
+    });
+    const unregisterBack = registerGoBackHandler(() => {
+      if (EXTRA_SCREENS[activeTab] || activeTab === "settings") {
+        setActiveTab(previousTab || tabs[0]?.key || "dashboard");
+      }
+    });
     return () => {
       unregisterNotifications?.();
       unregisterProfile?.();
+      unregisterOpenTab?.();
+      unregisterBack?.();
     };
-  }, []);
+  }, [activeTab, previousTab, tabs]);
 
   useEffect(() => {
     if (!tabs.length) return;
@@ -89,7 +110,16 @@ export default function MainTabs() {
     <ScreenBackground>
       <View style={styles.container}>
         <ActiveScreen />
-        <TabBar tabs={tabs} activeKey={activeTab} onTabPress={setActiveTab} showAddButton={canCreateOrganization} onAddPress={() => setIsCreateOpen(true)} />
+        <TabBar
+          tabs={tabs}
+          activeKey={activeTab}
+          onTabPress={(key) => {
+            if (!EXTRA_SCREENS[activeTab]) setPreviousTab(activeTab);
+            setActiveTab(key);
+          }}
+          showAddButton={canCreateOrganization}
+          onAddPress={() => setIsCreateOpen(true)}
+        />
       </View>
       <CreateOrganizationModal
         visible={isCreateOpen}

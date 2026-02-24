@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   titleWrap: { flex: 1 },
   title: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: "800",
     letterSpacing: -0.6,
   },

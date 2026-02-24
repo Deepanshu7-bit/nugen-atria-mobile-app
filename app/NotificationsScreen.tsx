@@ -3,10 +3,12 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { EmptyState } from "../components/EmptyState";
 import { NotificationCard } from "../components/NotificationCard";
+import { ThemeToggle } from "../components/ThemeToggle";
 import { useAuth } from "../contexts/AuthContext";
 import { useTheme } from "../contexts/ThemeContext";
 import { useAsync } from "../hooks/useAsync";
 import { getNotifications, markAllRead } from "../services/api/notifications";
+import { navigateBack } from "../services/navigation/appNavigation";
 import { styles } from "../styles/app/NotificationsScreen.styles";
 
 const FILTERS = [
@@ -53,18 +55,23 @@ export default function NotificationsScreen() {
       <View style={styles.header}>
         <View style={styles.top}>
           <View style={styles.leftGroup}>
-            <MaterialIcons name="arrow-back" size={22} color={colors.text} />
+            <TouchableOpacity onPress={navigateBack} style={[styles.backBtn, { backgroundColor: colors.surfaceMuted }]}>
+              <MaterialIcons name="arrow-back" size={20} color={colors.text} />
+            </TouchableOpacity>
             <Text style={[styles.title, { color: colors.text }]}>Notifications</Text>
           </View>
-          <TouchableOpacity
-            onPress={async () => {
-              if (!token) return;
-              await markAllRead(token).catch(() => null);
-              await refresh();
-            }}
-          >
-            <Text style={[styles.markAll, { color: colors.primary }]}>Mark all as read</Text>
-          </TouchableOpacity>
+          <View style={styles.topRight}>
+            <ThemeToggle size={34} />
+            <TouchableOpacity
+              onPress={async () => {
+                if (!token) return;
+                await markAllRead(token).catch(() => null);
+                await refresh();
+              }}
+            >
+              <Text style={[styles.markAll, { color: colors.primary }]}>Mark all as read</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
 
