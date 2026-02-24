@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ScreenBackground } from "../components/ScreenBackground";
+import { ThemeToggle } from "../components/ThemeToggle";
 import { useAuth } from "../contexts/AuthContext";
 import { useTheme } from "../contexts/ThemeContext";
 import { getPasswordIssues, validateEmail } from "../utils/validation";
@@ -27,9 +28,9 @@ export default function LoginScreen() {
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={styles.container}>
           <View style={styles.topBar}>
-            <MaterialIcons name="arrow-back" size={22} color={colors.text} />
+            <View style={styles.topSide} />
             <Text style={[styles.topTitle, { color: colors.text }]}>Admin Portal</Text>
-            <View style={styles.topSpacer} />
+            <ThemeToggle size={34} />
           </View>
 
           <View style={styles.hero}>
