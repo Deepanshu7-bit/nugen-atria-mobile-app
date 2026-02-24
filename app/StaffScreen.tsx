@@ -3,16 +3,23 @@ import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-nativ
 import { MaterialIcons } from "@expo/vector-icons";
 import { HeaderBar } from "../components/HeaderBar";
 import { StaffCard } from "../components/StaffCard";
+import { UserModal } from "../components/UserModal";
 import { EmptyState } from "../components/EmptyState";
 import { useAuth } from "../contexts/AuthContext";
 import { useHotel } from "../contexts/HotelContext";
 import { useTheme } from "../contexts/ThemeContext";
 import { useAsync } from "../hooks/useAsync";
 import { getUsers } from "../services/api/users";
+import { getRolesByHotel } from "../services/api/roles";
 import { styles } from "../styles/app/StaffScreen.styles";
 
 const extractUsers = (payload: any) => {
   const list = payload?.data?.data?.users || payload?.data?.users || payload?.users || payload?.data || payload || [];
+  return Array.isArray(list) ? list : [];
+};
+
+const extractRoles = (payload: any) => {
+  const list = payload?.data?.data?.roles || payload?.data?.roles || payload?.roles || payload?.data || payload || [];
   return Array.isArray(list) ? list : [];
 };
 
@@ -22,14 +29,23 @@ export default function StaffScreen() {
   const { hotelId, organizationId } = useHotel();
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
+  const [addOpen, setAddOpen] = useState(false);
+  const [viewOpen, setViewOpen] = useState(false);
+  const [selectedMember, setSelectedMember] = useState<any>(null);
 
-  const { data } = useAsync(
+  const { data, refresh } = useAsync(
     () => (token ? getUsers(token, { ...(hotelId ? { hotelId } : {}), ...(organizationId && !hotelId ? { organizationId } : {}) }) : null),
     [token, hotelId, organizationId],
-    { enabled: !!token, cacheKey: token ? `staff:${token}:${hotelId || organizationId || "all"}` : null },
+    { enabled: !!token, cacheKey: token ? `staff:${token}:${hotelId || organizationId || "all"}` : null, cacheTime: 0 },
+  );
+  const { data: roleData } = useAsync(
+    () => (token && hotelId ? getRolesByHotel(token, hotelId) : null),
+    [token, hotelId],
+    { enabled: !!token && !!hotelId, cacheKey: token ? `roles:staff:${token}:${hotelId || "none"}` : null },
   );
 
   const staff = useMemo(() => extractUsers(data), [data]);
+  const roles = useMemo(() => extractRoles(roleData), [roleData]);
   const onlineStaff = useMemo(
     () => staff.filter((member: any) => !String(member?.status || "online").toLowerCase().includes("offline")),
     [staff],
@@ -67,9 +83,9 @@ export default function StaffScreen() {
       />
 
       <View style={styles.section}>
-        <TouchableOpacity style={[styles.addButton, { backgroundColor: colors.primary }]}>
+        <TouchableOpacity style={[styles.addButton, { backgroundColor: colors.primary }]} onPress={() => setAddOpen(true)}>
           <MaterialIcons name="person-add" size={18} color="#fff" />
-          <Text style={styles.addButtonText}>Add New Staff Member</Text>
+          <Text style={styles.addButtonText}>Add New User</Text>
         </TouchableOpacity>
 
         <TextInput
@@ -102,6 +118,10 @@ export default function StaffScreen() {
                 email={member?.email}
                 status={member?.status || "Online"}
                 avatar={member?.avatar}
+                onPress={() => {
+                  setSelectedMember(member);
+                  setViewOpen(true);
+                }}
               />
             ))}
           </View>
@@ -109,6 +129,25 @@ export default function StaffScreen() {
           <EmptyState icon="group-off" title="No users found" description="Try a different search or hotel." />
         )}
       </View>
+
+      <UserModal
+        visible={addOpen}
+        token={token}
+        hotelId={hotelId}
+        roles={roles}
+        mode="create"
+        onClose={() => setAddOpen(false)}
+        onSaved={() => refresh()}
+      />
+      <UserModal
+        visible={viewOpen}
+        token={token}
+        hotelId={hotelId}
+        roles={roles}
+        mode="view"
+        userData={selectedMember}
+        onClose={() => setViewOpen(false)}
+      />
     </ScrollView>
   );
 }
