@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1a2b3d",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#15191d",
+                        "accent-red": "#ff4d4d",
+                        "accent-orange": "#ffa500",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Main Container -->
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden border-x border-slate-200 dark:border-slate-800">
+<!-- Header -->
+<div class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center p-4 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-primary/40 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h2 class="text-xl font-bold tracking-tight">Notifications</h2>
+</div>
+<button class="text-sm font-semibold text-primary dark:text-slate-300 hover:opacity-80 transition-opacity">
+                    Mark all read
+                </button>
+</div>
+<!-- Filter Tabs -->
+<div class="flex gap-2 p-4 overflow-x-auto no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-white">
+                    All
+                </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-slate-200 dark:bg-primary/30 px-5 text-sm font-medium hover:bg-slate-300 dark:hover:bg-primary/50 transition-colors">
+                    Orders
+                </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-slate-200 dark:bg-primary/30 px-5 text-sm font-medium hover:bg-slate-300 dark:hover:bg-primary/50 transition-colors">
+                    Cancellations
+                </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-slate-200 dark:bg-primary/30 px-5 text-sm font-medium hover:bg-slate-300 dark:hover:bg-primary/50 transition-colors">
+                    Messages
+                </button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto pb-24">
+<!-- Section: Today -->
+<div class="px-4 py-2">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Today</h3>
+<div class="space-y-3">
+<!-- New Order Card -->
+<div class="relative group flex items-start gap-4 rounded-xl bg-white dark:bg-primary/20 p-4 shadow-sm border border-slate-200 dark:border-slate-800 transition-all hover:border-primary/50 cursor-pointer">
+<div class="relative">
+<div class="flex size-12 items-center justify-center rounded-full bg-accent-red/10 text-accent-red">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<span class="absolute top-0 right-0 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-red opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-accent-red"></span>
+</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">New Order #1234 - $45.00</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400">2m ago</span>
+</div>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400 line-clamp-2">A new pickup order has been placed. Please review and confirm the preparation time.</p>
+</div>
+</div>
+<!-- Cancellation Card -->
+<div class="relative group flex items-start gap-4 rounded-xl bg-white dark:bg-primary/20 p-4 shadow-sm border border-slate-200 dark:border-slate-800 transition-all hover:border-primary/50 cursor-pointer">
+<div class="relative">
+<div class="flex size-12 items-center justify-center rounded-full bg-accent-orange/10 text-accent-orange">
+<span class="material-symbols-outlined">event_busy</span>
+</div>
+<span class="absolute top-0 right-0 flex h-3 w-3">
+<span class="relative inline-flex rounded-full h-3 w-3 bg-accent-orange"></span>
+</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Booking Cancelled: Table 4</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400">45m ago</span>
+</div>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">The reservation for 4 people at 7:30 PM has been cancelled by the customer.</p>
+</div>
+</div>
+<!-- Staff Message Card -->
+<div class="relative group flex items-start gap-4 rounded-xl bg-white dark:bg-primary/20 p-4 shadow-sm border border-slate-200 dark:border-slate-800 transition-all hover:border-primary/50 cursor-pointer">
+<div class="relative">
+<div class="flex size-12 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Staff Avatar" class="size-full object-cover" data-alt="Close up portrait of Sarah smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiFBBsc25n94ss3F6itjWXG4H26E9Ns-ivvGYWRJVGzFoJqu-GRFVwJliMasPxJqLT6h6i-rgiNecUs7iBCqBotTop-wI3exiOb9atJItYwY0ztY8Vy23YE1KE5aUFVu7AnE0Fgjk6YhA7submZAg-NHSaPPLCf8QZaKRFxVm4SJoYdYzW2SvefsgT_Ok2DRYChqLTcnMtLV5nhAEW7yHfnEPJDQMMNBDeiraflizK8HbHUe0N7fQe5mYsYytsRroXtnEm0Xo5GWsR"/>
+</div>
+<span class="absolute top-0 right-0 flex h-3 w-3 border-2 border-white dark:border-background-dark rounded-full bg-emerald-500"></span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Sarah (Server)</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400">1h ago</span>
+</div>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400 italic">"Inventory updated for tonight. We're running low on the sea bass special."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Earlier -->
+<div class="px-4 py-6">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Earlier</h3>
+<div class="space-y-3 opacity-70">
+<!-- Read Message -->
+<div class="relative group flex items-start gap-4 rounded-xl bg-slate-100 dark:bg-transparent p-4 border border-transparent dark:border-slate-800 transition-all hover:bg-slate-200 dark:hover:bg-primary/10 cursor-pointer">
+<div class="flex size-12 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-slate-800 dark:text-slate-200">New Order #1230</p>
+<span class="text-[10px] font-medium text-slate-500">Yesterday</span>
+</div>
+<p class="text-xs leading-relaxed text-slate-500 dark:text-slate-500">Order successfully completed and picked up by Alex G.</p>
+</div>
+</div>
+<!-- Staff Update -->
+<div class="relative group flex items-start gap-4 rounded-xl bg-slate-100 dark:bg-transparent p-4 border border-transparent dark:border-slate-800 transition-all hover:bg-slate-200 dark:hover:bg-primary/10 cursor-pointer">
+<div class="flex size-12 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Manager: Weekly Schedule</p>
+<span class="text-[10px] font-medium text-slate-500">2 days ago</span>
+</div>
+<p class="text-xs leading-relaxed text-slate-500 dark:text-slate-500">The schedule for next week has been posted. Please review your shifts.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white dark:bg-primary border-t border-slate-200 dark:border-slate-800 px-6 py-2 flex items-center justify-between z-30">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">receipt</span>
+<span class="text-[10px] font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary dark:text-white" href="#">
+<div class="relative">
+<span class="material-symbols-outlined fill-[1]">notifications</span>
+<span class="absolute -top-1 -right-1 flex h-2 w-2 rounded-full bg-accent-red"></span>
+</div>
+<span class="text-[10px] font-bold">Alerts</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</div>
+</body></html>

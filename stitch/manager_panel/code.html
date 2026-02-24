@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manager Panel - Grand Plaza Hotel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1a2b3d",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#15191d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            color: #ffffff;
+        }
+        .active-tab .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-primary dark:bg-primary border-b border-white/10 px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/40 border border-white/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Luxury hotel building exterior facade" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvWBJgggNtnnPV0nWE5HNQ30G90LGKMjL3jGWqwnWD7U1QCmFWMMxxib4j5A2rR-6V6HZokQSUDhDj9dV_IRThp1hpf7EawbrN14edBH844Qvqqbq1IjhKlnxpEN1Nt8nvU8Sk35Z3kveJ8pPb1J7C0vEW7aCFErLJ8WQLj5PDPrN5ebPR0896yNtepfFpW_3F9jz9oJvL2bsdO6Jz5dQIlBpnJ_g_cSVEN4wEkAcyz9cFTYA5yzI8f4RKb49NTp2jEDVoyY0X0I7q"/>
+</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-tight">Grand Plaza Hotel</h1>
+<p class="text-slate-400 text-xs flex items-center gap-1">
+<span class="size-2 bg-green-500 rounded-full animate-pulse"></span>
+                    Live Operations
+                </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="size-10 rounded-lg flex items-center justify-center hover:bg-white/10 text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="size-10 rounded-lg flex items-center justify-center hover:bg-white/10 text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- KPI Grid -->
+<section class="p-4 grid grid-cols-2 gap-4">
+<div class="bg-primary/20 dark:bg-primary/40 border border-white/5 p-4 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-sm font-medium">Bookings</span>
+<span class="text-emerald-400 text-xs font-bold">+12%</span>
+</div>
+<div class="text-2xl font-bold">24</div>
+<div class="text-xs text-slate-500">Today's Check-ins</div>
+</div>
+<div class="bg-primary/20 dark:bg-primary/40 border border-white/5 p-4 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-sm font-medium">Active Orders</span>
+<span class="text-orange-400 text-xs font-bold">-5%</span>
+</div>
+<div class="text-2xl font-bold">12</div>
+<div class="text-xs text-slate-500">Pending Service</div>
+</div>
+<div class="bg-primary/20 dark:bg-primary/40 border border-white/5 p-4 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-sm font-medium">Staff Attendance</span>
+<span class="text-emerald-400 text-xs font-bold">92%</span>
+</div>
+<div class="text-2xl font-bold">18/22</div>
+<div class="text-xs text-slate-500">Current Shift</div>
+</div>
+<div class="bg-primary/20 dark:bg-primary/40 border border-white/5 p-4 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-sm font-medium">Revenue</span>
+<span class="text-emerald-400 text-xs font-bold">+8%</span>
+</div>
+<div class="text-2xl font-bold">$4,850</div>
+<div class="text-xs text-slate-500">Daily Total</div>
+</div>
+</section>
+<!-- Occupancy Chart -->
+<section class="px-4 py-2">
+<div class="bg-primary/20 dark:bg-primary/40 border border-white/5 rounded-lg p-5">
+<div class="flex items-end justify-between mb-4">
+<div>
+<p class="text-slate-400 text-sm font-medium">Occupancy Rate</p>
+<h2 class="text-3xl font-bold">78%</h2>
+</div>
+<div class="text-right">
+<span class="text-xs text-slate-500">Last 24 Hours</span>
+</div>
+</div>
+<div class="h-32 w-full mt-4">
+<svg fill="none" height="100%" preserveaspectratio="none" viewbox="0 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#chartGradient)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#3b82f6" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#3b82f6" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-between mt-2 text-[10px] text-slate-500 font-bold uppercase tracking-wider">
+<span>12am</span>
+<span>6am</span>
+<span>12pm</span>
+<span>6pm</span>
+<span>11pm</span>
+</div>
+</div>
+</section>
+<!-- Recent Activity Feed -->
+<section class="p-4">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold">Recent Activity</h2>
+<button class="text-primary text-sm font-semibold dark:text-slate-400">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Activity Item -->
+<div class="flex gap-4 p-3 bg-white/5 rounded-lg border border-white/5">
+<div class="size-10 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-emerald-500 text-xl">login</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold">Check-in: Room 402</p>
+<span class="text-[10px] text-slate-500">2 min ago</span>
+</div>
+<p class="text-xs text-slate-400 mt-1">Guest: Robert Fox (Platinum Member)</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex gap-4 p-3 bg-white/5 rounded-lg border border-white/5">
+<div class="size-10 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-orange-500 text-xl">restaurant</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold">New Room Service Order</p>
+<span class="text-[10px] text-slate-500">15 min ago</span>
+</div>
+<p class="text-xs text-slate-400 mt-1">Room 215 • Burger &amp; Soda • $32.00</p>
+<div class="mt-2">
+<span class="px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 text-[10px] font-bold uppercase tracking-wider">Pending</span>
+</div>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex gap-4 p-3 bg-white/5 rounded-lg border border-white/5">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-blue-500 text-xl">person</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold">Staff Clock-in</p>
+<span class="text-[10px] text-slate-500">45 min ago</span>
+</div>
+<p class="text-xs text-slate-400 mt-1">Sarah Wilson (Housekeeping)</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex gap-4 p-3 bg-white/5 rounded-lg border border-white/5">
+<div class="size-10 rounded-full bg-slate-500/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-slate-400 text-xl">logout</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold">Check-out: Room 108</p>
+<span class="text-[10px] text-slate-500">1 hour ago</span>
+</div>
+<p class="text-xs text-slate-400 mt-1">Payment processed via Stripe</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (Optional but helpful for single hotel manager) -->
+<button class="fixed right-4 bottom-24 size-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-20 border border-white/10">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full bg-primary border-t border-white/10 pb-6 pt-3 px-6 flex justify-between items-center z-30">
+<a class="flex flex-col items-center gap-1 active-tab" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider">Staff</span>
+</a>
+</nav>
+</body></html>

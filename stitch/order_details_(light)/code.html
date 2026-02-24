@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detailed Order Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Sticky Top Header -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+<div class="flex items-center justify-between max-w-2xl mx-auto">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</button>
+<div>
+<h1 class="text-lg font-bold leading-tight">Order #RS-8829</h1>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Received 4 mins ago</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800 rounded-lg">
+<span class="material-symbols-outlined text-emerald-600 text-sm">timer</span>
+<span class="text-emerald-700 dark:text-emerald-400 font-bold text-sm">14:02 remaining</span>
+</div>
+</div>
+</header>
+<main class="max-w-2xl mx-auto p-4 space-y-4 pb-32">
+<!-- Status Indicator -->
+<div class="flex items-center justify-between px-2">
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Received</span>
+</div>
+<div class="h-0.5 flex-1 bg-slate-200 dark:bg-slate-800 mx-2 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-sm">restaurant</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Preparing</span>
+</div>
+<div class="h-0.5 flex-1 bg-slate-200 dark:bg-slate-800 mx-2 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">In Transit</span>
+</div>
+<div class="h-0.5 flex-1 bg-slate-200 dark:bg-slate-800 mx-2 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-sm">done_all</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Delivered</span>
+</div>
+</div>
+<!-- Guest Information Card -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500">Guest Information</h3>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">VIP Gold</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="size-14 rounded-full bg-slate-100 dark:bg-slate-800 bg-cover bg-center" data-alt="Portrait photo of guest Jonathan Doe" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCVIb52SoiHikfk0lSBRg7RK06-YA4S1D7ghoy-clzEl4U_3Rzo_vKjckDL9jia8_jOYn59jubxxUZOK4hbxJD5B5ECG6YSQJIOYSnmUBc4RKOcjUuXeQUcl8IL4JSJAqtIkOKJw0zjqrMCNZkOTuaqwRlcRTMeS7R0sGY5m1F3xNsmm-HjhrTWfT1EV1BDfmj2sqg4U6Q9VUU99dLnn64_DZCotIz8scNRNHdSSz9y8ZZAgepW3EpPQlN2GEZH0n2HU4BV7h9jBX4t')"></div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<p class="text-base font-bold text-slate-900 dark:text-slate-100 leading-tight">Jonathan Doe</p>
+<div class="size-2 rounded-full bg-emerald-500"></div>
+</div>
+<p class="text-sm font-medium text-primary">Room 402 • <span class="text-slate-500 dark:text-slate-400 font-normal">Guest Since 2021</span></p>
+</div>
+<button class="size-10 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+</section>
+<!-- Order Items -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-4 py-3 border-b border-slate-100 dark:border-slate-800">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500">Order Items (3)</h3>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Item 1 -->
+<div class="p-4 flex gap-4">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-slate-800 bg-cover bg-center shrink-0" data-alt="Close up of a wagyu beef burger" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMNfCea_iMFG8x0pWuPvF7zqHvTyJnAYcUwGwkEyy8mtp7RhNUZH8F9AMX8RHzdCsJGshCethHc9qQn64HE5_DZVqExrM52LErq85R7JhMAenNSiHhUm2LwSV_mQZG8D92AT8Ly3cdbe5vKrqldWOY9iF1NnbDqNWljx20m2CGip4WJkIwTwfZ7Mn-18z139-pfMzjqKWwJGuyFuTo-PI3V073e0SgSluWYyh3qJYByKsSfz18a5iiznh7kZzibTT_ClihDjjHlk9U')"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-slate-900 dark:text-slate-100 leading-tight">Wagyu Beef Burger</h4>
+<span class="font-bold text-slate-900 dark:text-slate-100">$28.00</span>
+</div>
+<p class="text-xs text-slate-500 mt-1">Quantity: 1</p>
+<div class="mt-2 flex flex-wrap gap-2">
+<span class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-medium text-slate-600 dark:text-slate-300">Medium Rare</span>
+<span class="inline-flex items-center rounded-full bg-red-50 dark:bg-red-900/20 px-2 py-0.5 text-[10px] font-medium text-red-600 dark:text-red-400">No Onions</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-4 flex gap-4">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-slate-800 bg-cover bg-center shrink-0" data-alt="Bottle of sparkling water with condensation" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCykAp9fWG2XXhLSx5QrEG0Lp0GMkN9QB5bdM9BV2eFHsED9rRfSeRLHiLZ6k1QjRQrIPhDHEz3hfAPTicNrIP1o5K0nFYGnw83stx8vT4krwtz1OuXqVrKC24h_YujyAR2kWzyyblKLABeGI3ISdwoVkAGqTGUtfqmO1qaZQhxNTClqH3HaWxNEZpQ5c6M05Cavehi0weqjQ6niwaqzk3gAw2PCXNSdXIfbKQF4Axas-vkuJ2ZGzQiWvL02imqyegz-sPf7bdoWAgv')"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-slate-900 dark:text-slate-100 leading-tight">Sparkling Water</h4>
+<span class="font-bold text-slate-900 dark:text-slate-100">$12.00</span>
+</div>
+<p class="text-xs text-slate-500 mt-1">Quantity: 2</p>
+<div class="mt-2 flex flex-wrap gap-2">
+<span class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-medium text-slate-600 dark:text-slate-300">Chilled</span>
+<span class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-medium text-slate-600 dark:text-slate-300">Fresh Lemon</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-4 flex gap-4">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-slate-800 bg-cover bg-center shrink-0" data-alt="Caesar salad with croutons and parmesan" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAJdZzr7gyIwtCXi08uwlYZiEQmTctxuHR0tYtZ6ZR5yvuKVv_6PW5JctPMSwtGyNokCyaak6R7du1az9W2gkswhYeXuMut5BDrbk5DJepxnQJIyGY9NmEYI2sv446bW8decst9KFyxe7W6PS_1LvEmD6umDTrtPuLBm80YcDN5rdPLhpULlk9dxt_y8leChFTLz69cuubU0yproXU3wEU1y-W5TUcfXCtjeg4DPAceTNex7h_-47_jWjbcE2XWHZQIfkpWsuc1TQP')"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-slate-900 dark:text-slate-100 leading-tight">Caesar Salad</h4>
+<span class="font-bold text-slate-900 dark:text-slate-100">$18.00</span>
+</div>
+<p class="text-xs text-slate-500 mt-1">Quantity: 1</p>
+<div class="mt-2 flex flex-wrap gap-2">
+<span class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-medium text-slate-600 dark:text-slate-300">Dressing on side</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Special Instructions -->
+<section class="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-500 text-sm">warning</span>
+<h3 class="text-sm font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400">Special Instructions</h3>
+</div>
+<div class="space-y-2">
+<p class="text-sm font-bold text-red-600 dark:text-red-400">⚠️ ALLERGIES: PEANUTS</p>
+<p class="text-sm text-amber-900 dark:text-amber-200">"Please provide extra napkins. Do not knock, leave the tray at the door and press the doorbell."</p>
+</div>
+</section>
+<!-- Cost Summary -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 dark:text-slate-400">Subtotal</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">$58.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 dark:text-slate-400">Service Fee (15%)</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">$8.70</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 dark:text-slate-400">Tax</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">$4.60</span>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">Total Order Value</span>
+<span class="text-xl font-bold text-primary">$71.30</span>
+</div>
+</section>
+</main>
+<!-- Fixed Action Footer -->
+<footer class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 pb-8">
+<div class="max-w-2xl mx-auto flex gap-3">
+<button class="flex-1 bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_arrow</span>
+                Accept
+            </button>
+<button class="flex-1 bg-primary/10 text-primary font-bold py-4 rounded-xl hover:bg-primary/20 transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">restaurant</span>
+                Preparing
+            </button>
+<button class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold py-4 rounded-xl cursor-not-allowed flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">check_circle</span>
+                Delivered
+            </button>
+</div>
+</footer>
+</body></html>

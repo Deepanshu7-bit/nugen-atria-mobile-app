@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white shadow-2xl">
+<header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 pt-6 pb-4">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">hotel_class</span>
+<h1 class="text-2xl font-bold tracking-tight">Bookings</h1>
+</div>
+<button class="relative p-2 rounded-full hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+</div>
+<div class="relative mb-4">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-slate-100 border-none rounded-xl focus:ring-2 focus:ring-primary/50 text-sm placeholder-slate-500" placeholder="Search guest names or booking ID" type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex shrink-0 items-center justify-center px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold">
+                    All
+                </button>
+<button class="flex shrink-0 items-center justify-center px-5 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium hover:bg-slate-200">
+                    Pending
+                </button>
+<button class="flex shrink-0 items-center justify-center px-5 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium hover:bg-slate-200">
+                    Checked-in
+                </button>
+<button class="flex shrink-0 items-center justify-center px-5 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium hover:bg-slate-200">
+                    Checked-out
+                </button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+<div class="group relative bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Profile portrait of a male guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb3Qmb5eoIlv3OWuEslIiRv-F3WJF0ClHZgqOnpObxBZFS-rVBVjzTL_9RzgI94SURS2xVsWlFrX2w6FOYiLi7CNfW6VCnOgnUeUcdf9M0w2RcFKTz7WAXMEskJZvAfu8sCcATk8Rqm_c8mvq19xHZbH9vz6Vxfw7TPHM2KfLOVi6WOJocZEUevMoqsWJqVnPuH8-L50qgwn2p3D0cIMA3cDU10pJHM4b6odJVA5qXokYHl8tSEFrSB8ITz1aXuCOL-yRYRX5SAnIW"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">Johnathan Doe</h3>
+<p class="text-xs text-slate-500 font-medium tracking-wide uppercase">ID: #BK-8821</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-wider">Pending</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-3 border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">calendar_month</span>
+<span class="text-xs font-medium text-slate-600">Oct 12 - Oct 15</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">bed</span>
+<span class="text-xs font-medium text-slate-600 text-nowrap truncate">Deluxe King Room</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Profile portrait of a female guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuepEfaBrVi1fK-nzQ7qPKrHUdmHKGRr-9egdbZ4waQDoYcrAEhvUTxde2o5yQxYld_0Hb17OMiVLs2h-d928KmDqeL9vOYN7jxnpYbrmCtoZPPygqDANjhkrti85iPN4mHvwLpvzsTjn8ebfSXs9UR2tTyxaJWgv8H5u8zC3dRCVpUSO9-31nER7ATMy5FtUFg6q94QQ0zBPa2kVtMUJQbI1C8R7j_UDpX1S4SnBueLSWtDVxNHNvyD3JCsgsI7_Trx13dDZWnuRv"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">Sarah Jenkins</h3>
+<p class="text-xs text-slate-500 font-medium tracking-wide uppercase">ID: #BK-7740</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider">Checked-in</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-3 border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">calendar_month</span>
+<span class="text-xs font-medium text-slate-600">Oct 10 - Oct 14</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">king_bed</span>
+<span class="text-xs font-medium text-slate-600 text-nowrap truncate">Ocean View Suite</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Profile portrait of a smiling male guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5j1F9p_mm7YqDpUL05tj8J1aoUrin6LeiSqT25QbhJLkXhUs_lCXkDRoPQk61oHAekdZYUNfOfnRA_loI-9b96p0Kg83_OGJdjcjEevSqoP1qbDb5j9CKO_5oAckFEXbGExeWO21wVEahyAkLEhU1kQGtDKWppPX8R5o4ZVdC_wo9Im_0S1C8KxY6VKlUWiUE19wKT5p7iRpT4N1-50KadvwjTPRyzYr3FQIv2i29w7s5OtnJqYY8mCB7alUUheBAfHczewFDrbFs"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">Michael Ross</h3>
+<p class="text-xs text-slate-500 font-medium tracking-wide uppercase">ID: #BK-6129</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold uppercase tracking-wider">Checked-out</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-3 border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">calendar_month</span>
+<span class="text-xs font-medium text-slate-600">Oct 08 - Oct 11</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">apartment</span>
+<span class="text-xs font-medium text-slate-600 text-nowrap truncate">Standard Twin</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow opacity-90">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Profile portrait of a female professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hHyQ423vyW9kvWlq0wAxgcs6WhGclfzFKfKkC1mxb0fvWYWddOJuR_UjQKGbTaDqiDo7XodfG9klzkI1tJyAmPv4WEKPLc7SF-dgYLeQRmAIUKVIWyd_rw_yD6rLpOQGt4fqudxEcUG_C--_7JHgqxFsWtc5_uL3KV6EcvRAdBcW23YQqcG-xCBONDXkpCTDI-uk-qIdrOwAIkdEqPXsMjbMRN4IXmuj2yRYycf-CpwHDoyjPts2RJG07GhIGGM8X40Q6Y4sToAc"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">Emily Blunt</h3>
+<p class="text-xs text-slate-500 font-medium tracking-wide uppercase">ID: #BK-9001</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-wider">Pending</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-3 border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">calendar_month</span>
+<span class="text-xs font-medium text-slate-600">Oct 15 - Oct 20</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">deck</span>
+<span class="text-xs font-medium text-slate-600 text-nowrap truncate">Garden Villa</span>
+</div>
+</div>
+</div>
+<div class="h-20"></div>
+</main>
+<button class="absolute bottom-24 right-6 h-14 w-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform z-30">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<nav class="sticky bottom-0 bg-white border-t border-slate-200 px-6 py-3 flex items-center justify-between z-40">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-semibold uppercase tracking-wide">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined active-icon">calendar_today</span>
+<span class="text-[10px] font-semibold uppercase tracking-wide">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-semibold uppercase tracking-wide">Guests</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-semibold uppercase tracking-wide">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

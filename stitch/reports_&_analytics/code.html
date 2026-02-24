@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports &amp; Analytics - Hotel Owner Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1a2b3d",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#15191d",
+                        "accent-blue": "#3b82f6",
+                        "accent-teal": "#2dd4bf",
+                        "accent-purple": "#a855f7",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-bar { transition: height 0.3s ease; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10 dark:border-primary/40 px-4 py-4">
+<div class="flex items-center justify-between max-w-5xl mx-auto">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-primary/10 dark:hover:bg-primary/30 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Analytics</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 bg-primary dark:bg-slate-100 text-white dark:text-primary px-4 py-2 rounded-lg font-semibold text-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Export</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-5xl mx-auto w-full p-4 space-y-6 pb-24">
+<!-- Filters Row -->
+<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+<button class="flex shrink-0 items-center gap-2 rounded-lg bg-white dark:bg-primary/40 border border-slate-200 dark:border-primary/60 px-4 py-2 text-sm font-medium shadow-sm">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Last 30 Days</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="flex shrink-0 items-center gap-2 rounded-lg bg-white dark:bg-primary/40 border border-slate-200 dark:border-primary/60 px-4 py-2 text-sm font-medium shadow-sm">
+<span class="material-symbols-outlined text-lg">apartment</span>
+<span>All Properties</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="flex shrink-0 items-center gap-2 rounded-lg bg-white dark:bg-primary/40 border border-slate-200 dark:border-primary/60 px-4 py-2 text-sm font-medium shadow-sm">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+<span>More Filters</span>
+</button>
+</div>
+<!-- KPI Summary Tiles -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 rounded-xl p-5 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Revenue</p>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full">+12.5%</span>
+</div>
+<p class="text-2xl font-bold">$128,430</p>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-primary/40 rounded-full overflow-hidden">
+<div class="h-full bg-accent-blue w-3/4"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 rounded-xl p-5 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Occupancy %</p>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full">+4.2%</span>
+</div>
+<p class="text-2xl font-bold">78.2%</p>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-primary/40 rounded-full overflow-hidden">
+<div class="h-full bg-accent-teal w-4/5"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 rounded-xl p-5 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg Daily Rate (ADR)</p>
+<span class="text-rose-500 text-xs font-bold bg-rose-500/10 px-2 py-0.5 rounded-full">-1.8%</span>
+</div>
+<p class="text-2xl font-bold">$245.00</p>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-primary/40 rounded-full overflow-hidden">
+<div class="h-full bg-accent-purple w-1/2"></div>
+</div>
+</div>
+</div>
+<!-- Revenue Bar Chart -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-bold text-lg">Revenue Growth</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Monthly revenue breakdown</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-full bg-accent-blue"></span>
+<span class="text-[10px] font-medium uppercase tracking-wider opacity-60">Current</span>
+</div>
+</div>
+</div>
+<div class="relative h-64 flex items-end justify-between gap-2 px-2">
+<!-- Simple SVG/CSS Bar Chart -->
+<div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="relative w-full h-32 bg-accent-blue/20 rounded-t-md group-hover:bg-accent-blue/40 transition-colors">
+<div class="absolute bottom-0 left-0 right-0 h-2/3 bg-accent-blue rounded-t-md"></div>
+</div>
+<span class="text-[10px] font-medium opacity-50">Jan</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="relative w-full h-40 bg-accent-blue/20 rounded-t-md group-hover:bg-accent-blue/40 transition-colors">
+<div class="absolute bottom-0 left-0 right-0 h-3/4 bg-accent-blue rounded-t-md"></div>
+</div>
+<span class="text-[10px] font-medium opacity-50">Feb</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="relative w-full h-48 bg-accent-blue/20 rounded-t-md group-hover:bg-accent-blue/40 transition-colors">
+<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-accent-blue rounded-t-md"></div>
+</div>
+<span class="text-[10px] font-medium opacity-50">Mar</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="relative w-full h-56 bg-accent-blue/20 rounded-t-md group-hover:bg-accent-blue/40 transition-colors">
+<div class="absolute bottom-0 left-0 right-0 h-4/5 bg-accent-blue rounded-t-md"></div>
+</div>
+<span class="text-[10px] font-medium opacity-50">Apr</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="relative w-full h-64 bg-accent-blue/20 rounded-t-md group-hover:bg-accent-blue/40 transition-colors">
+<div class="absolute bottom-0 left-0 right-0 h-full bg-accent-blue rounded-t-md shadow-[0_0_15px_rgba(59,130,246,0.3)]"></div>
+</div>
+<span class="text-[10px] font-bold text-accent-blue">May</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer opacity-40">
+<div class="relative w-full h-32 bg-slate-300 dark:bg-primary/60 rounded-t-md"></div>
+<span class="text-[10px] font-medium opacity-50">Jun</span>
+</div>
+</div>
+</div>
+<!-- Two Column Charts -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Occupancy Share Donut -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 rounded-xl p-6 shadow-sm">
+<h3 class="font-bold text-lg mb-6">Occupancy Share</h3>
+<div class="flex flex-col items-center justify-center relative py-4">
+<!-- Circular Progress/Donut representation -->
+<div class="relative w-40 h-40">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background track -->
+<circle class="text-slate-100 dark:text-primary/40" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="12"></circle>
+<!-- Segment 1 -->
+<circle class="text-accent-blue" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="100.48" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Segment 2 -->
+<circle class="text-accent-teal" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="200.96" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold">78%</span>
+<span class="text-[10px] uppercase opacity-50 font-semibold tracking-widest">Avg</span>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-2 gap-4 w-full">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-blue"></span>
+<div class="flex flex-col">
+<span class="text-xs font-medium">Downtown Hotel</span>
+<span class="text-[10px] opacity-60">60% share</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-teal"></span>
+<div class="flex flex-col">
+<span class="text-xs font-medium">Resort Spa</span>
+<span class="text-[10px] opacity-60">20% share</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ADR Stats Table -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-lg">ADR by Segment</h3>
+<button class="text-accent-blue text-xs font-semibold">View All</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-light dark:bg-primary/30 border border-slate-100 dark:border-primary/40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-accent-blue/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-blue text-sm">family_restroom</span>
+</div>
+<div>
+<p class="text-sm font-semibold">Direct Booking</p>
+<p class="text-[10px] opacity-60">High Priority</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">$285</p>
+<p class="text-[10px] text-emerald-500 font-medium">+$12.00</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-light dark:bg-primary/30 border border-slate-100 dark:border-primary/40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-accent-teal/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-teal text-sm">language</span>
+</div>
+<div>
+<p class="text-sm font-semibold">OTA Channels</p>
+<p class="text-[10px] opacity-60">Expedia / Booking</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">$210</p>
+<p class="text-[10px] text-rose-500 font-medium">-$4.00</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-light dark:bg-primary/30 border border-slate-100 dark:border-primary/40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-accent-purple/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-purple text-sm">groups</span>
+</div>
+<div>
+<p class="text-sm font-semibold">Group Rates</p>
+<p class="text-[10px] opacity-60">Conferences</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">$195</p>
+<p class="text-[10px] text-emerald-500 font-medium">+$8.50</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-20 bg-white dark:bg-primary border-t border-slate-200 dark:border-primary/60 pb-safe">
+<div class="max-w-5xl mx-auto flex justify-around items-center px-4 py-3">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-accent-blue" href="#">
+<span class="material-symbols-outlined font-bold">analytics</span>
+<span class="text-[10px] font-bold">Analytics</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">apartment</span>
+<span class="text-[10px] font-medium">Properties</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Floating Filter Trigger (Mobile) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary dark:bg-slate-100 text-white dark:text-primary rounded-full shadow-xl flex items-center justify-center md:hidden z-30 transition-transform active:scale-90">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</body></html>

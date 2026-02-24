@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1006693618524",
+    "project_id": "nugen-atria",
+    "storage_bucket": "nugen-atria.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006693618524:android:72b61b4c78e627a5f2e799",
+        "android_client_info": {
+          "package_name": "com.nugenit.atria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVRsdXfJC7mjjUcKqit6Ol4ngHUTzL_Yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

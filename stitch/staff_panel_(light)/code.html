@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Panel - Operational Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .task-checkbox:checked + span {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+        /* Custom scrollbar for horizontal orders */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Header -->
+<header class="sticky top-0 z-10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+<div class="flex items-center justify-between max-w-2xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="size-full object-cover" data-alt="Staff member profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg8e8QbO4e5Bmn-tCITotE2LAnUKlLszuDaa-jrqnko8Clkg4VUQxkMWy4U0JED55s2YrzKsVOzMGD-a9FV7Qe2AjVJ4PPkMMZhNuFYTOG3ELOqZH1tGauEvBgTAycFmqOtuJvyHTN_F8pEtgBAD3hBmyi0qONwxKyCsps47pFNlW-WPuRt-Gt5y9rJTcmz_QGzw6JEfMQ5oefQYSB-Z2I5VmR3WVW-bP-W07eHsGT7NuSdE8L_ppWix3CfXxCysUmUt9f-poLBo52"/>
+</div>
+<div>
+<h1 class="text-sm font-bold leading-tight">Alex Rivera</h1>
+<div class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+<p class="text-[10px] font-medium text-slate-500 uppercase tracking-wider">On Shift • Floor Lead</p>
+</div>
+</div>
+</div>
+<button class="relative p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-2xl mx-auto w-full p-4 space-y-6 pb-24">
+<!-- Urgent Notification Banner -->
+<section>
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<div class="flex-1">
+<h3 class="text-sm font-semibold text-primary">System Update</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Inventory sync scheduled for 11:00 PM tonight. Please finalize all stock logs before then.</p>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</section>
+<!-- Active Orders Section -->
+<section>
+<div class="flex items-center justify-between mb-3 px-1">
+<h2 class="text-base font-bold flex items-center gap-2">
+                    Active Orders
+                    <span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 rounded-full">3 LIVE</span>
+</h2>
+<button class="text-xs font-semibold text-primary hover:underline">View All</button>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<!-- Order Card 1 -->
+<div class="min-w-[200px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold text-slate-400 uppercase">#ORD-1234</span>
+<span class="text-[10px] font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded uppercase">Prep</span>
+</div>
+<p class="text-sm font-semibold mb-1">Double Wagyu Burger</p>
+<p class="text-xs text-slate-500 mb-4">No onions, extra sauce</p>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-xs font-bold">Ready in 5m</span>
+</div>
+</div>
+<!-- Order Card 2 -->
+<div class="min-w-[200px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold text-slate-400 uppercase">#ORD-1235</span>
+<span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded uppercase">In Queue</span>
+</div>
+<p class="text-sm font-semibold mb-1">Garden Fresh Salad</p>
+<p class="text-xs text-slate-500 mb-4">Dressing on side</p>
+<div class="flex items-center gap-1.5 text-slate-400">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-xs font-bold">12m wait</span>
+</div>
+</div>
+<!-- Order Card 3 -->
+<div class="min-w-[200px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold text-slate-400 uppercase">#ORD-1236</span>
+<span class="text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded uppercase">Finalizing</span>
+</div>
+<p class="text-sm font-semibold mb-1">Large Iced Latte</p>
+<p class="text-xs text-slate-500 mb-4">Oat milk, 2 pumps vanilla</p>
+<div class="flex items-center gap-1.5 text-emerald-600">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-xs font-bold">Almost Ready</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Daily Tasks Section -->
+<section>
+<div class="mb-3 px-1">
+<h2 class="text-base font-bold">Shift Tasks</h2>
+<p class="text-xs text-slate-500">4 of 7 completed</p>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl divide-y divide-slate-100 dark:divide-slate-800">
+<label class="flex items-center gap-4 p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<input checked="" class="task-checkbox size-5 rounded-md border-slate-300 dark:border-slate-600 text-primary focus:ring-primary/20 transition-all cursor-pointer" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Sanitize all high-touch workstations</span>
+</label>
+<label class="flex items-center gap-4 p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<input checked="" class="task-checkbox size-5 rounded-md border-slate-300 dark:border-slate-600 text-primary focus:ring-primary/20 transition-all cursor-pointer" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Restock condiment and napkin stations</span>
+</label>
+<label class="flex items-center gap-4 p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<input class="task-checkbox size-5 rounded-md border-slate-300 dark:border-slate-600 text-primary focus:ring-primary/20 transition-all cursor-pointer" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Verify inventory counts for dairy shipment</span>
+</label>
+<label class="flex items-center gap-4 p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<input class="task-checkbox size-5 rounded-md border-slate-300 dark:border-slate-600 text-primary focus:ring-primary/20 transition-all cursor-pointer" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Review temperature logs for freezer B</span>
+</label>
+<label class="flex items-center gap-4 p-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<input class="task-checkbox size-5 rounded-md border-slate-300 dark:border-slate-600 text-primary focus:ring-primary/20 transition-all cursor-pointer" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Assign breaks for afternoon shift</span>
+</label>
+</div>
+<button class="w-full mt-4 flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 text-slate-500 hover:text-primary hover:border-primary/50 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">add</span>
+                Add Custom Task
+            </button>
+</section>
+<!-- Summary Footer Card -->
+<section>
+<div class="bg-slate-900 dark:bg-primary/20 text-white rounded-xl p-5 shadow-lg shadow-slate-200 dark:shadow-none">
+<div class="flex justify-between items-center mb-4">
+<div>
+<p class="text-xs text-slate-400 font-medium">Shift Revenue</p>
+<h4 class="text-xl font-bold">$1,248.50</h4>
+</div>
+<div class="text-right">
+<p class="text-xs text-slate-400 font-medium">Avg Prep Time</p>
+<h4 class="text-xl font-bold">4.2m</h4>
+</div>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 text-center uppercase tracking-widest font-bold">75% of daily target reached</p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 pb-safe">
+<div class="flex items-center justify-around max-w-2xl mx-auto h-16 px-4">
+<a class="flex flex-col items-center justify-center gap-0.5 text-primary group" href="#">
+<span class="material-symbols-outlined fill-[1] font-bold">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 group" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 group" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 group" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

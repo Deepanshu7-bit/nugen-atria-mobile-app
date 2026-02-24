@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1a2b3d",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#15191d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Section -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pt-6 pb-2">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-primary/10 dark:bg-primary text-primary dark:text-slate-100">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight">Staff Management</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400">48 Members Total</p>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">person_add</span>
+<span class="text-sm">Add Staff</span>
+</button>
+</div>
+<!-- Stats Summary -->
+<div class="flex gap-3 mb-4">
+<div class="flex-1 bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 p-3 rounded-xl">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Online Now</p>
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold">12</span>
+<span class="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 p-3 rounded-xl">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">On Break</p>
+<span class="text-lg font-bold">5</span>
+</div>
+<div class="flex-1 bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 p-3 rounded-xl">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Off Duty</p>
+<span class="text-lg font-bold">31</span>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="flex flex-col gap-3 pb-2">
+<label class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-white dark:bg-primary/30 border-slate-200 dark:border-primary/50 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl pl-10 pr-4 py-2.5 text-sm placeholder:text-slate-400 transition-all outline-none" placeholder="Search staff by name or role..." type="text"/>
+</label>
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-primary text-white text-xs font-medium">All</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 text-slate-600 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-primary/30 transition-colors">Managers</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 text-slate-600 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-primary/30 transition-colors">Chefs</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 text-slate-600 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-primary/30 transition-colors">Housekeeping</button>
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/40 text-slate-600 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-primary/30 transition-colors">Reception</button>
+</div>
+</div>
+</header>
+<!-- Staff List Section -->
+<main class="flex-1 px-4 py-2 space-y-3 pb-24">
+<!-- Staff Card 1 (Online) -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 rounded-xl p-4 flex items-center justify-between active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Professional portrait of a male hotel manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvm6C8xKn3ayI2koHRbp0BG_UnrMQHFXeBSEuKzsu7kaU36A8gDCXyzMoxs4Ywz80x3eqZiz4xuwaLOIR2CZQpPNuwLfUQZxcqkoW4WApqgpN6Kfz-8Tfz6eW1R1SQ2D3_WPmzVVDSwypX2vIeqK07bCvV1tcapAnvMOWSXL9ygRj2JchHZWO7VqG_-63V2NFwltzpwRi2joxqVJsFncyNlW5WXsYd_-dxana_SmQQeaKEBV8BYGr0hlXLhjUxta2mRoIBybApBhE0"/>
+<span class="absolute bottom-0 right-0 size-3.5 bg-emerald-500 border-2 border-white dark:border-background-dark rounded-full"></span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Marcus Sterling</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">General Manager</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-emerald-500 uppercase">Online</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- Staff Card 2 (Offline) -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 rounded-xl p-4 flex items-center justify-between active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Portrait of a female chef in uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgjkw9x_tCuwkQsRLGlfK6AooTcVvcsJysvj8iP2pKTIFuPsuqOKqCF19tsh83TuS1b5ynDAB6T8mfEACpbn2l4-5i3yM7LBymYAb8QgO-dtTC-SSV_0bKlTOGNdL9a-oTmwXOIYOVCOoHTsKJkSifBWW67pmr3IsL-zrnXGUkNegCuC5kY9EfvZLTtGx_qOXjkXOtR-DytBBpO4mZgvfsJdCTpCoDUW1Xqsl2_zN1uA3-hwEQN9ywdNDex6amMQ9WVRGIINxoGb2q"/>
+<span class="absolute bottom-0 right-0 size-3.5 bg-slate-400 border-2 border-white dark:border-background-dark rounded-full"></span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Elena Rodriguez</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Executive Chef</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Offline</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- Staff Card 3 (Online) -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 rounded-xl p-4 flex items-center justify-between active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Staff member in housekeeping uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNSnjla9u7G_nawpYjnDzfQ0CYGVHGm2ZbIic5hN5opsQ3gs7ducn3XNyjlBphjrjJ-ZvohUsU4_VCqN0G6B1cW_ZunV0gn2G5kx2l5bdwA8oNyZUHRtyltYloOUKshSzQ4Sfox0kQgUDD7LP2lT_DBLlFXjJtXypjqgCzx_AyYEnINGIXeQRohnvlobuXJta0pBJ4So4oSp_0JiqBBHoCp4DKTBD9XV_0a22IfKqenLaV6sr4MFkAogntzs0zwPjqcODgHqGfvDl_"/>
+<span class="absolute bottom-0 right-0 size-3.5 bg-emerald-500 border-2 border-white dark:border-background-dark rounded-full"></span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">David Chen</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Housekeeping</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-emerald-500 uppercase">Online</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- Staff Card 4 -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 rounded-xl p-4 flex items-center justify-between active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-12 rounded-full bg-primary flex items-center justify-center text-white font-bold">SM</div>
+<span class="absolute bottom-0 right-0 size-3.5 bg-emerald-500 border-2 border-white dark:border-background-dark rounded-full"></span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Sarah Miller</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Receptionist</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-emerald-500 uppercase">Online</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- Staff Card 5 -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 rounded-xl p-4 flex items-center justify-between active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Portrait of a young staff member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgQXUh3KxQLw-JG-feKWoDiPkei7zCk9eeIKh20KgDSCvD3gmVLUizUmYfPXY37-M4fwioiYXLDYgEAFmtPHryGf1uLjp_g69BkFSqZECqnq3ZIgwnKoHAnpx4pJoODN3nOFifCGxvFm8EAxCDKLAWDkJajc_bkWt1rc-zRK9_6kYRhGEwvNq2nzDqQROCMa7kAvTlRf8HfyRZpjczat-79DbnRKTfMy_diX2bVnqHdxRUAhwEZKSbTScYiQZwY5CoTDHDPkY3F9Ov"/>
+<span class="absolute bottom-0 right-0 size-3.5 bg-slate-400 border-2 border-white dark:border-background-dark rounded-full"></span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Jordan Parks</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Maintenance</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Offline</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- Staff Card 6 -->
+<div class="bg-white dark:bg-primary/20 border border-slate-200 dark:border-primary/30 rounded-xl p-4 flex items-center justify-between active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Portrait of a female front desk agent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTlCl3haTr5feW6V8PqhckdZDi8dtlaMbHphllfTGEJkJuqVz2PqBAf17aaZyAJ7oiybETB0bZ9Ft0y4ixw1p_1FKFq75blVC5yoN9Svj25MzX5kj0haoybgUwZl9MVwZw5egxaozsG0tq6ddUuOAIvVdjNdHwed-jMUjo4aSScRVUsdbFbrVjZ0mX4wWXIlRNTEUHAn2CgR07NcBiRDz0sn7t9XLwO66TfxZ-9jOivv1jz6AIp8yq-KVW7W2ZHE_jEmaN35KLWRtz"/>
+<span class="absolute bottom-0 right-0 size-3.5 bg-slate-400 border-2 border-white dark:border-background-dark rounded-full"></span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Linda Wu</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Front Desk Agent</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Offline</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet Simulation (Action Panel) -->
+<div class="fixed inset-x-0 bottom-0 z-20 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-primary/50 rounded-t-xl shadow-2xl p-6 transform translate-y-full transition-transform duration-300 pointer-events-none opacity-0">
+<!-- This would be toggled in a real app, visual representation only -->
+<div class="w-12 h-1.5 bg-slate-300 dark:bg-primary/50 rounded-full mx-auto mb-6"></div>
+<div class="flex items-center gap-4 mb-6">
+<img class="size-14 rounded-full border-2 border-primary" data-alt="Profile thumbnail of Marcus Sterling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI_RGqwBph_CmfW1txU502c3AQtEO5adBtDGvLA07KstW7cPo0ray8IivdWt2wJ7-hCxNnu4ImhD_bwvVv7UdYyd_4LkwIx1eh7RCvrhU0gfwGSoNsa4sIlJczAFdVAmGCrujJWxL4L_1NwDesfodAKjBGdMGRmGXPK1eXblc_GsOjKAVlZo-PDbOtdkWA42I8Oa3RYpdaY2YoyJOlaIdHFzfMYwU4PJKJz1X8eDs6MGJkjjJTufT_zq29C25JrUvlotk9OEj076cU"/>
+<div>
+<h2 class="text-lg font-bold">Edit Marcus Sterling</h2>
+<p class="text-sm text-slate-500">Employee ID: #ST-8829</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="text-xs font-bold uppercase text-slate-400 mb-2 block">Assigned Role</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-primary text-white p-3 rounded-lg text-sm font-medium border border-primary">Manager</button>
+<button class="bg-slate-50 dark:bg-primary/20 p-3 rounded-lg text-sm font-medium border border-slate-200 dark:border-primary/40">Chef</button>
+<button class="bg-slate-50 dark:bg-primary/20 p-3 rounded-lg text-sm font-medium border border-slate-200 dark:border-primary/40">Housekeeping</button>
+<button class="bg-slate-50 dark:bg-primary/20 p-3 rounded-lg text-sm font-medium border border-slate-200 dark:border-primary/40">Reception</button>
+</div>
+</div>
+<div>
+<label class="text-xs font-bold uppercase text-slate-400 mb-2 block">Hotel Assignment</label>
+<select class="w-full bg-slate-50 dark:bg-primary/20 border-slate-200 dark:border-primary/40 rounded-lg text-sm p-3 focus:ring-primary focus:border-primary">
+<option>Grand Royale - Downtown</option>
+<option>Azure Bay Resort</option>
+<option>The Metropolitan Inn</option>
+</select>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 bg-primary text-white font-bold py-3 rounded-lg">Save Changes</button>
+<button class="px-6 border border-slate-200 dark:border-primary/40 py-3 rounded-lg font-bold">Cancel</button>
+</div>
+</div>
+</div>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-30 bg-white/80 dark:bg-primary/80 backdrop-blur-lg border-t border-slate-200 dark:border-primary/30 flex items-center justify-around px-4 pb-6 pt-3">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary dark:text-white" href="#">
+<span class="material-symbols-outlined fill-current">group</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">hotel</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Rooms</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

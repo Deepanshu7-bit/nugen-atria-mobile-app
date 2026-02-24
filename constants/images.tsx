@@ -1,0 +1,16 @@
+export const LOGO_URI =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuBLZKGPFc3H65FKq5caGHG8vhQVu0JdIoQAA-1aMn44-ChMxt6ieRG3Rj7Kp0R4YEWEVkfBhClobYHR9HkiW3O5YgfHWNDuEv_6Ff-DdDYmjM5FXopMk5GHc5YVHo9X7AfZctjtXO03HDU0u1_psYc-GeHJETp2EF28x8bZCL2gkj6GAbX2o1H5sft1iA6UiuWF6l0OzKQrIOl4uF3u38gYc0D-4Ers7kIsrC-8b6cezHHqep4bLNiJQ94h3VESFFPn2ZRQ-4v_ct8";
+
+export const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=900&auto=format&fit=crop&q=60";
+
+export const QUICK_FOOD_IMAGE =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuDzhKc_K2GuB3xuyijQdhaqWUlpRrYlos8geM90G2vpWc_vlZv1v2iZD-IynFXKPCUDJwgA00kr_WV6OavZwuo7AH6cDel9xe88QHQUUeHcHeioNAYRWfssO44-iaPNb-TAHNYm-cM42jwVeEKIomQLjEuo5t8Hc1wV_-tOBGdpnOjacAjTd5hJdIP-VaYpUpaQKeNTDeYv-DnZht9V0VdVcqhDt2P--VZcq_Td0w46F82cHdfTZGL4vKfceSk4R_otIhcIPjtSpUmb";
+
+export const QUICK_CLEANING_IMAGE =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuCT8VaSQ8OcWTPUYgjjmaWaHzBYatLMjpXn0murirznKMBFutgqT333K8JI0e_wI9pUae_--6i84DoMnvfinkkrO6V1fdFsG1ETi-48GpH5tlcbaGRvCPu_B4rpacN7EvgvwXoQGc4klmdFAH6CkkfVWBzCiHQ-VViuK80ta0kEHC_isCTsNz8W0NZ3CRcYE1-Ta4OBed_2sgJbu7xtEtomw7W5CXKBs4ybNbaL96dMTat2vr7wEMWhcZQh3_ACLMK-f0Q7_Y4RQ3T-";
+
+export const QUICK_LAUNDRY_IMAGE =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuA845dvh1qtzLsxmJsnGY1UcJ_bN7I5uHH4lIYqdyhqbI1abJG-1LW6_BJN34OnsdwOaRiWE8nPtGmaAcEr5QJCNCdrAWqRDOrbsxrMJkaXfH-ovJbqkkvRXTsWlVwB4wlBMOeykT3LgG4DvnpLYOPF5hxcJqmqaRtoh0KDJ64tBefy8cKnkFQjZSyVtzziOIc8A0bn7nXUvzJSH_2zB5NAdkTgbl6tVRKQs4OlNjvBCJuxfqDod0gav_cd00GCHU5aA_cGStC1p28f";
+
+export const FALLBACK_AVATAR = LOGO_URI;

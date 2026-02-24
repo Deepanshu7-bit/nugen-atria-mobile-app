@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Staff Management</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between">
+<div class="flex items-center gap-3">
+<div class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Staff</h1>
+</div>
+<button class="flex items-center justify-center rounded-full size-10 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 px-4 py-4 space-y-6">
+<div class="flex flex-col gap-4">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 text-white font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">person_add</span>
+<span>Add New Staff Member</span>
+</button>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-white dark:bg-slate-900 border-none rounded-xl py-3.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 shadow-sm" placeholder="Search staff by name or role..." type="text"/>
+</div>
+</div>
+<div class="flex border-b border-slate-200 dark:border-slate-800 gap-6">
+<button class="flex flex-col items-center border-b-2 border-primary pb-3 text-primary font-bold text-sm">
+                    All Staff
+                </button>
+<button class="flex flex-col items-center border-b-2 border-transparent pb-3 text-slate-500 font-medium text-sm hover:text-slate-700 dark:hover:text-slate-300">
+                    Online (12)
+                </button>
+<button class="flex flex-col items-center border-b-2 border-transparent pb-3 text-slate-500 font-medium text-sm hover:text-slate-700 dark:hover:text-slate-300">
+                    Offline (4)
+                </button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Professional headshot of a male staff member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYkTFKvvW9ilIlKrKdxFnr_kDxoc73BNT-W7lUTNkWiRJZ1mf6g_ARgDGw1Vpwa_LMP8sK-nxNzklzu4FPbj7CU5GPuR40Y-hP68tPXva-DdEp6iAdrrD5KhAtQFx_sshiJPyoCZZQyvhx2BjDHP4EzKrnqfArgfTxy45-fdlGkUn3pBtApabt57vUrRKKqmiqtm3wUTLW2zX6u1fkpmSg-MDnMdnfEl8qItK8jCZq0HMsm4VgoTNpZjnIpOOtrjaS7P8HxRh6SgQj"/>
+<span class="absolute bottom-0 right-0 size-3.5 rounded-full border-2 border-white dark:border-slate-900 bg-emerald-500"></span>
+</div>
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Marcus Thorne</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Executive Chef</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Online</span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Professional headshot of a female manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAInKunAGQOTKZ8hK773KK_LvnzKrJkGugWduDuCOGjPaXEJBrsx4956vU894_GS5X5Pt03DqHvXYu_KulY5jTmS-GyAqTxV5OpyGm-NEiCi_68qa-d-cSZON1hf6aHkzmnfEKAiflWDUIeRMAVLg60cXHIBhGJOHs4BdHJaV-cGYhlJA8PO8ofl2iR8oXjL3rS0WomXXEEY6fUFskiPIqqUxTIA7vdcWIYfJj5U6cBn4NoMFK8EvXZGukdGWUZ7QrKriFIhQEPbp1T"/>
+<span class="absolute bottom-0 right-0 size-3.5 rounded-full border-2 border-white dark:border-slate-900 bg-emerald-500"></span>
+</div>
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Elena Rodriguez</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Floor Manager</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Online</span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="size-12 rounded-full object-cover grayscale" data-alt="Professional headshot of a waiter staff" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq26BchcYyBNocjZshwCBpJJkxIZjWDSyZ5voZk2OESWevYNx3EL5qoXOVZsfsXpz0X7mx3bVkASNnVmPFf3npYKSRdX6Qy8ghz0F701KsZ9Q7APVCiaANni5eins69dTcu9YlROvCzwDJi0fl0Bci4QN5eVKlJ6zDoEXsFZP83WJfH_1KJnQ738XyyOR7vjcW_Yu7EBpcWSfqr8f1ULtqf-hd1DNcS651cfxqQjYEAnPp0o1WxbaAEEbgWufbOhcf26VFa3mpqLEt"/>
+<span class="absolute bottom-0 right-0 size-3.5 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 dark:bg-slate-700"></span>
+</div>
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Julian Chen</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Senior Waiter</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">Offline</span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Professional headshot of a female staff member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVszWCe_vBcuhAmAuoelrVFhTFB94WngDjZGI6hVKweOnmXrJVNsnFmQJd-GDgyw9CurwSpc5WGK4Du0R7P1FK3aYOv1EWDDk-iiz7VBNv0H64ZyBIM5r23pzWyVzDY5ilmQKK1imsP57c5zI_B3b6VhtMNpenrflFrhVU5Bf8ILRkY6LN80L8FFDDz9ENIUE3-fBLtSoDZLbKQWViuenpWzaqZJ6cQrFiR5duk6Vw1s_qQz_NuChCp0qWfHZRScRTpxTvYPP3aaBH"/>
+<span class="absolute bottom-0 right-0 size-3.5 rounded-full border-2 border-white dark:border-slate-900 bg-emerald-500"></span>
+</div>
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Sarah Jenkins</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Pastry Chef</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Online</span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="size-12 rounded-full object-cover" data-alt="Professional headshot of a male waiter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoYz4brWC6TD6B_m4-_1vcL0Bo4j8LsWBfER6QKlx_4eG8UwKFJPmxy6hrWS3CKp6Ju1Z3irwSr-bi-7kJGKPodlZEiv3KQ5mxBvSWRWU8J7qPSMklKCySYgbu43XKFsEw9bTw0rX24NSitqWs8MH20jkINnvw25vZ3m9G8Kej6l-Cr9z79zXLFvH72dg4NaUiUmdSumGVZzDRjWOr2EgWwRrIMYqMlqsehd4bDyoIo9ZLHZhqgx-gV9dK6jCHswX15rKZJROqpq-4"/>
+<span class="absolute bottom-0 right-0 size-3.5 rounded-full border-2 border-white dark:border-slate-900 bg-emerald-500"></span>
+</div>
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">David Miller</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Head Sommelier</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Online</span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<nav class="sticky bottom-0 border-t border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md px-4 pb-6 pt-3 flex items-center justify-around">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined !fill-1">group</span>
+<span class="text-[10px] font-bold">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-medium">Schedule</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

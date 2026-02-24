@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hotel Manager Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+<!-- Header Section -->
+<header class="sticky top-0 z-30 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-4 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between max-w-5xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="bg-primary rounded-lg p-2 text-white">
+<span class="material-symbols-outlined block">apartment</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight">Grand Plaza Hotel</h1>
+<div class="flex items-center gap-2">
+<span class="size-2 bg-green-500 rounded-full"></span>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status: Open</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-light"></span>
+</button>
+<div class="size-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="Manager Profile" class="w-full h-full object-cover" data-alt="Manager profile picture portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0DUojKqlBmx-f6uCIQiqh3GsWc7VSdlLjfl7aPza0Wip3JUXN_bf3zYiWQqHpEfD9UsPDvMlt9kk0KJOdB7yTBSuVfbOIIJ_Gxs4f__927iTfvaWhJt-K5Tp_MIGS3bkDZX0bSpR7NRD8JKAPg6nLcysXdmESSan6YXOTENiwBSXJS-WRfLBpZMgeVcNGpmkPHkObRdi39-0uKQFoJu_VpaOInYg9JpA7wZCIAnCpij_XBWa77DlrJIM8zd9Cc7_N2aLClkBnJetc"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-4 pt-6 space-y-6">
+<!-- Key Metrics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Revenue Card (High Contrast) -->
+<div class="bg-primary text-white p-5 rounded-xl shadow-lg shadow-primary/20 flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<p class="text-sm font-medium opacity-90 uppercase tracking-wide">Total Revenue</p>
+<span class="material-symbols-outlined opacity-80">payments</span>
+</div>
+<div>
+<h3 class="text-3xl font-bold tracking-tight">$42,850</h3>
+<div class="flex items-center gap-1 mt-1 text-sm font-medium text-green-300">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>12.5% vs last week</span>
+</div>
+</div>
+</div>
+<!-- Occupancy Card -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-xl flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Occupancy Rate</p>
+<span class="material-symbols-outlined text-primary">bed</span>
+</div>
+<div>
+<h3 class="text-3xl font-bold tracking-tight">88.2%</h3>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+<!-- Active Bookings Card -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-xl flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Active Bookings</p>
+<span class="material-symbols-outlined text-primary">event_available</span>
+</div>
+<div>
+<h3 class="text-3xl font-bold tracking-tight">156</h3>
+<div class="flex items-center gap-1 mt-1 text-sm font-medium text-slate-500">
+<span>12 check-ins today</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Revenue Trend Section -->
+<section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold">Revenue Trend</h2>
+<select class="bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-sm font-medium px-3 py-1.5 focus:ring-2 focus:ring-primary">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="relative h-48 w-full">
+<!-- Simple SVG Area Chart Representation -->
+<svg class="w-full h-full preserve-3d" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2463eb" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#2463eb" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q50,70 100,40 T200,50 T300,20 T400,30 L400,100 L0,100 Z" fill="url(#gradient)"></path>
+<path d="M0,80 Q50,70 100,40 T200,50 T300,20 T400,30" fill="none" stroke="#2463eb" stroke-linecap="round" stroke-width="3"></path>
+<!-- Points -->
+<circle cx="100" cy="40" fill="#2463eb" r="3"></circle>
+<circle cx="200" cy="50" fill="#2463eb" r="3"></circle>
+<circle cx="300" cy="20" fill="#2463eb" r="3"></circle>
+<circle cx="400" cy="30" fill="#2463eb" r="3"></circle>
+</svg>
+<div class="flex justify-between mt-4 text-[10px] text-slate-400 font-medium uppercase tracking-tighter">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<section class="space-y-4">
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-xl overflow-x-auto hide-scrollbar">
+<button class="flex-1 min-w-[100px] py-2 px-4 rounded-lg text-sm font-bold bg-white dark:bg-slate-700 shadow-sm text-primary transition-all">Bookings</button>
+<button class="flex-1 min-w-[100px] py-2 px-4 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-all">Orders</button>
+<button class="flex-1 min-w-[100px] py-2 px-4 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-all">Staff</button>
+<button class="flex-1 min-w-[100px] py-2 px-4 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-all">Reports</button>
+</div>
+<!-- Tab Content: Active Bookings List -->
+<div class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-bold text-slate-700 dark:text-slate-300">Today's Check-ins</h3>
+<button class="text-primary text-sm font-bold">View all</button>
+</div>
+<!-- Booking Card 1 -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1">
+<p class="font-bold">Alexander Wright</p>
+<p class="text-xs text-slate-500">Room 402 • Deluxe Suite</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold uppercase">Checked In</span>
+<p class="text-[10px] text-slate-400 mt-1">10:30 AM</p>
+</div>
+</div>
+<!-- Booking Card 2 -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1">
+<p class="font-bold">Elena Rodriguez</p>
+<p class="text-xs text-slate-500">Room 105 • Standard Double</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase">Pending</span>
+<p class="text-[10px] text-slate-400 mt-1">Expected 2:00 PM</p>
+</div>
+</div>
+<!-- Booking Card 3 -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1">
+<p class="font-bold">Marcus Chen</p>
+<p class="text-xs text-slate-500">Room 312 • Executive Suite</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase">Upcoming</span>
+<p class="text-[10px] text-slate-400 mt-1">Expected 4:30 PM</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed right-6 bottom-24 size-14 bg-primary text-white rounded-full shadow-xl shadow-primary/40 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 pb-6 pt-3 z-50">
+<div class="flex items-center justify-between max-w-lg mx-auto">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-primary font-fill">dashboard</span>
+<span class="text-[10px] font-bold text-primary">Overview</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-medium">Calendar</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</nav>
+</body></html>

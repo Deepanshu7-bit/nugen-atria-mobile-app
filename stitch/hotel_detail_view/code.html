@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hotel Manager - Grand Plaza</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1a2b3d",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#15191d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between max-w-xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary dark:text-slate-100">apartment</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">Grand Plaza</h1>
+</div>
+<button class="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">
+                Switch
+            </button>
+</div>
+</header>
+<!-- Main Dashboard Content -->
+<main class="flex-1 overflow-y-auto pb-24">
+<div class="max-w-xl mx-auto w-full p-4 space-y-6">
+<!-- Revenue Trend Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Weekly Revenue Trend</p>
+<h2 class="text-3xl font-bold mt-1">$42,500</h2>
+</div>
+<div class="flex items-center gap-1 text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded-full text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        12.5%
+                    </div>
+</div>
+<div class="bg-white dark:bg-primary/20 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+<div class="h-[160px] w-full relative">
+<svg fill="none" height="100%" preserveaspectratio="none" viewbox="0 0 472 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V150H0V109Z" fill="url(#revenueGradient)"></path>
+<path class="dark:stroke-slate-400" d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#1a2b3d" stroke-opacity="0.6" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="revenueGradient" x1="236" x2="236" y1="1" y2="150">
+<stop stop-color="#1a2b3d" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="#1a2b3d" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Mon</span>
+<span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Tue</span>
+<span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Wed</span>
+<span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Thu</span>
+<span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Fri</span>
+<span class="text-slate-400 text-xs font-bold uppercase tracking-wider text-primary dark:text-slate-200">Sat</span>
+<span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Sun</span>
+</div>
+</div>
+</section>
+<!-- KPI Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-primary/20 rounded-xl p-5 border border-slate-200 dark:border-slate-800 space-y-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Occupancy Rate</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">85%</span>
+<span class="text-emerald-500 text-xs font-bold">+5%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-primary dark:bg-slate-300 h-full" style="width: 85%"></div>
+</div>
+<p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold">102 of 120 rooms</p>
+</div>
+<div class="bg-white dark:bg-primary/20 rounded-xl p-5 border border-slate-200 dark:border-slate-800 space-y-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Active Bookings</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">124</span>
+<span class="text-rose-500 text-xs font-bold">-2%</span>
+</div>
+<div class="flex gap-1 mt-3">
+<div class="flex -space-x-2">
+<img alt="Guest" class="w-6 h-6 rounded-full border-2 border-white dark:border-primary" data-alt="Guest avatar circle 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuB6I-2BYHGKYzVJw6X6HivhI-ocRxuAm_28tHAwc36Vpri06drJs49Gi5qEOn8vTa3QoIyn7bQBzqqI1T67A-7jYQ2yZVt__PVTmdCCWLAou59zgV6ykHp_EmG_fgxdm7P0GZ5FhT1_hs3o0ULEJH86Bes-ElR1ypxusW_cKggp9oqPNEy2uAyQqvnZmgjjmw8yO0dCPwebixQAaaVl1HYdGg5Tv78nszGceHMvP3s3hzmwd5IATsMp1ANsr4gRhGZifGRuztuRUd"/>
+<img alt="Guest" class="w-6 h-6 rounded-full border-2 border-white dark:border-primary" data-alt="Guest avatar circle 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHlkqei_Ul0H40hEtXe6PmXSq1l4XItAMz0NMWKv-x124RoFYbocSFKvlKvxk3kgPoSv_PvwTFCsSdTUVLEQ9fLM2lRD-36C27m0zw6hl1fG9YVGPnpjjESVb1JEv0ka5RPVvakVQwnCbeqhqEydax2eT-NEZyHoaETEFipVe-DZkBd3K99GoOpAAu-Fz-idRdXkqjkCs1flw1HUz_NC93GoWYDAVl7iXmnjbCkcwWH4olVjdoUflqx70Kciec2xbCJvK6t3UPcZh6"/>
+<img alt="Guest" class="w-6 h-6 rounded-full border-2 border-white dark:border-primary" data-alt="Guest avatar circle 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsEVOMYrK6RijO8j6-lAsTHdOfakp4B5i2g3HDvpoxjo5MIaVyKlAEOIOTJnNjOsDe6utmNKH17Cb_QcbQnQlX-fSCVEFKL0PYexj-sMXbcuu8XIeMrm9E7boEQmVMoZGq4f81wMPYHnhbvZ2YZ6WstRe2Tnl6vGAK2waj-BkbKQ3kdnQMYObYBlJshwCHwT9DDFFBkpdJL6j_U0PPFG7MVK4EAB2fjXc3GhosMG-ULzhEFUwJHov3YxegS1vBbJqGokCR9SMvM_n9"/>
+</div>
+<span class="text-[10px] text-slate-400 font-bold self-center">+121 more</span>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<section>
+<div class="flex border-b border-slate-200 dark:border-slate-800 overflow-x-auto no-scrollbar">
+<button class="px-5 py-3 text-sm font-bold border-b-2 border-primary dark:border-slate-200 text-primary dark:text-slate-200 whitespace-nowrap">Bookings</button>
+<button class="px-5 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-slate-200 whitespace-nowrap">Orders</button>
+<button class="px-5 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-slate-200 whitespace-nowrap">Staff</button>
+<button class="px-5 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-slate-200 whitespace-nowrap">Reports</button>
+</div>
+<!-- Active Tab Content: Bookings Summary -->
+<div class="mt-6 space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-bold text-base">Booking Summary</h3>
+<span class="text-xs font-semibold text-slate-400 underline cursor-pointer">View All</span>
+</div>
+<!-- Booking Cards -->
+<div class="space-y-3">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-primary/10 rounded-xl p-4 border border-slate-100 dark:border-slate-800/50 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-primary/5 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">login</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Arrival: Elena Rodriguez</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Suite 402 • Confirmed</p>
+</div>
+<div class="text-right">
+<span class="bg-emerald-500/10 text-emerald-500 text-[10px] font-bold px-2 py-1 rounded">Today 2PM</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-primary/10 rounded-xl p-4 border border-slate-100 dark:border-slate-800/50 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-amber-600">logout</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Departure: James Wilson</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Standard 105 • Checked-in</p>
+</div>
+<div class="text-right">
+<span class="bg-amber-500/10 text-amber-600 text-[10px] font-bold px-2 py-1 rounded">11 AM</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-primary/10 rounded-xl p-4 border border-slate-100 dark:border-slate-800/50 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-primary/5 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">login</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Arrival: Sarah Jenkins</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Deluxe 308 • Pending Pay</p>
+</div>
+<div class="text-right">
+<span class="bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold px-2 py-1 rounded">Tomorrow</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-primary border-t border-slate-200 dark:border-slate-800 z-20">
+<div class="max-w-xl mx-auto flex justify-between px-4 pb-6 pt-3">
+<a class="flex flex-col items-center gap-1 text-primary dark:text-slate-100" href="#">
+<span class="material-symbols-outlined fill-1">dashboard</span>
+<span class="text-[10px] font-bold">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-medium">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-[10px] font-medium">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</body></html>

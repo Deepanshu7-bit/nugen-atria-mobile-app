@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manager Overview Panel - Grand Plaza Suites</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-white shadow-2xl">
+<header class="flex items-center justify-between p-4 pt-6 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-3">
+<div class="relative size-12 shrink-0">
+<img alt="Manager Profile Photo" class="rounded-full size-12 object-cover border-2 border-primary/20" data-alt="Professional male manager headshot profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCumevbqW91QEFhBkGeiYfLjtpTcshZQitGE8_dSwPaEUNdCHKlbcUJBBl89UMlgNCItgV13gQShXSvBDhMqPxEehvh4FeDQnTQyssIjEQl-1yFnyq1xheBB7nfeTgMqmFQKgPEnyZvCTXKRoVobaDHe5w3x9Ndc9OLeHtXz6J87xXf31ymIQBIg_Ei2TA1breA0_bVg7jzZ5-19pe8x3lDbM63RKubl0kX3kzlLGx5y47upJ0MeQfha4vm25BJCF72tN4H9skB-_r"/>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold leading-tight tracking-tight">Grand Plaza Suites</h1>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider">Property Manager</p>
+</div>
+</div>
+<button class="relative flex size-10 items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-slate-700">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white"></span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<section class="grid grid-cols-2 gap-4 p-4">
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-slate-100 bg-white shadow-sm">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg text-xl">payments</span>
+<span class="text-green-600 text-xs font-bold bg-green-50 px-2 py-1 rounded-full">+12%</span>
+</div>
+<div>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wide">Daily Revenue</p>
+<p class="text-2xl font-bold mt-1">$1,240.00</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-slate-100 bg-white shadow-sm">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg text-xl">groups</span>
+<span class="text-slate-400 text-xs font-bold bg-slate-50 px-2 py-1 rounded-full">85%</span>
+</div>
+<div>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wide">Attendance</p>
+<p class="text-2xl font-bold mt-1">172 <span class="text-sm font-normal text-slate-400">/ 200</span></p>
+</div>
+</div>
+</section>
+<section class="px-4 py-2">
+<div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+<div class="flex justify-between items-center mb-3">
+<h3 class="text-sm font-bold text-primary uppercase tracking-wider">Occupancy Target</h3>
+<p class="text-primary text-sm font-bold">85%</p>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2.5 mb-2">
+<div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+</div>
+<p class="text-slate-500 text-xs font-medium">170/200 Staff &amp; Guests currently on-site</p>
+</div>
+</section>
+<section class="mt-6">
+<div class="flex items-center justify-between px-4 mb-4">
+<h2 class="text-lg font-bold">Recent Activity</h2>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="flex flex-col space-y-px">
+<div class="flex items-center gap-4 px-4 py-4 hover:bg-slate-50 border-b border-slate-50 transition-colors">
+<img alt="Guest Avatar" class="size-10 rounded-full object-cover" data-alt="Young female guest profile portrait photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa8nbnFKMD4o-R3KHR1M6AZjKTlyzmhxGQqZL2OvPxdTvi7S6S58aQdKzKFr5DK9YGxTPRZsiHUGGXUhRbSDueCJi0OjTeC8ferPFYdkVMq1s28N0xL42Y5zccaJ28LIVuOsQAfBqZk43Lknoggp_OfHrr3fYe6M8z6B826MO0QR15a8MCfYle6RvrQobaMKH56wPT3DFWZBjsmg273sFGFerNc2C9xfmouBKABGaG2-4CBxgIIu6tEb3EreeXt8ZrE9pcXPinippK"/>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-900">Sarah Jenkins</p>
+<p class="text-xs text-slate-500">Checked into <span class="font-medium text-primary">Room 302</span></p>
+</div>
+<p class="text-[10px] font-medium text-slate-400 uppercase">2 mins ago</p>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 hover:bg-slate-50 border-b border-slate-50 transition-colors">
+<div class="size-10 rounded-full bg-orange-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600 text-xl">restaurant</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-900">Order #5402</p>
+<p class="text-xs text-slate-500">2x Breakfast Service</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full uppercase tracking-tighter">Pending</span>
+<p class="text-[10px] font-medium text-slate-400 uppercase">15 mins ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 hover:bg-slate-50 border-b border-slate-50 transition-colors">
+<img alt="Guest Avatar" class="size-10 rounded-full object-cover" data-alt="Young male guest profile portrait photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUgZtU3EyQ5HJXnnuWlSQelx5h38NausrkKrWLV5CC8MI0_CG-G9dihlDXfvvVdcMkp4Gb_sOiKovRfuwPH6mqABB9CdjaVWcQRZ6v-UvhhynGBHnf1E59tR14ZmFFPalDcrRG9wokKZhzsVWIxe_BKOmZX1JnlZp3q3bsVfmvrSX7n0TdUJ81MpbBC5Q1G8V4HRr6XgLKA23bmBm4tIBiIudRIMnX0BCICHvTBNnP4t_jRyNPcwz5Rs9RhMjzswhqB5WlJ7aMg0qZ"/>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-900">Robert Chen</p>
+<p class="text-xs text-slate-500">New Booking: <span class="font-medium">Deluxe Suite</span></p>
+</div>
+<p class="text-[10px] font-medium text-slate-400 uppercase">1 hr ago</p>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 hover:bg-slate-50 border-b border-slate-50 transition-colors">
+<div class="size-10 rounded-full bg-blue-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-xl">cleaning_services</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-900">Room 104 Cleaned</p>
+<p class="text-xs text-slate-500">Assigned to: Maria G.</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full uppercase tracking-tighter">Done</span>
+<p class="text-[10px] font-medium text-slate-400 uppercase">2 hrs ago</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<button class="fixed bottom-24 right-6 size-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform active:scale-95 z-20">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 backdrop-blur-md border-t border-slate-100 px-6 py-3 flex justify-between items-center z-30">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined active-icon">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Stock</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

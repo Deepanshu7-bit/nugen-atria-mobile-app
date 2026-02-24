@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-md mx-auto bg-white dark:bg-slate-900 min-h-screen flex flex-col shadow-xl">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Notifications</h1>
+</div>
+<button class="text-primary text-sm font-semibold hover:opacity-80 transition-opacity">
+                    Mark all as read
+                </button>
+</div>
+<!-- Tabs / Filter Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="px-5 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-sm shadow-primary/20">
+                    All
+                </button>
+<button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    Orders
+                </button>
+<button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    Cancellations
+                </button>
+</div>
+</header>
+<!-- Notification List -->
+<main class="flex-1 overflow-y-auto p-4 space-y-3">
+<div class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2 px-1">Recent</div>
+<!-- Unread Order Notification -->
+<div class="relative group bg-primary/5 dark:bg-primary/10 border border-primary/10 dark:border-primary/20 rounded-xl p-4 flex gap-4 transition-all hover:shadow-md">
+<div class="absolute right-4 top-4 size-2.5 bg-primary rounded-full ring-4 ring-white dark:ring-slate-900"></div>
+<div class="size-12 shrink-0 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-slate-900 dark:text-white truncate pr-4">Order #12345 Placed</h3>
+<span class="text-[11px] font-medium text-primary">2m ago</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Your order has been successfully placed and is being processed by the merchant.</p>
+</div>
+</div>
+<!-- Read Shipping Notification -->
+<div class="bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-xl p-4 flex gap-4 transition-all hover:bg-slate-50 dark:hover:bg-slate-800">
+<div class="size-12 shrink-0 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-semibold text-slate-800 dark:text-slate-200 truncate">Package Shipped</h3>
+<span class="text-[11px] font-medium text-slate-400">1h ago</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Great news! Your package for order #11980 is on its way to you.</p>
+</div>
+</div>
+<div class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mt-6 mb-2 px-1">Yesterday</div>
+<!-- Cancellation Alert -->
+<div class="bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-xl p-4 flex gap-4 transition-all hover:bg-slate-50 dark:hover:bg-slate-800">
+<div class="size-12 shrink-0 bg-red-50 dark:bg-red-900/20 rounded-lg flex items-center justify-center text-red-500">
+<span class="material-symbols-outlined">cancel</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-semibold text-slate-800 dark:text-slate-200 truncate">Order Cancelled</h3>
+<span class="text-[11px] font-medium text-slate-400">Yesterday</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Order #10293 was cancelled due to stock unavailability. Refund is processing.</p>
+</div>
+</div>
+<!-- Refund Notification -->
+<div class="bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-xl p-4 flex gap-4 transition-all hover:bg-slate-50 dark:hover:bg-slate-800">
+<div class="size-12 shrink-0 bg-green-50 dark:bg-green-900/20 rounded-lg flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-semibold text-slate-800 dark:text-slate-200 truncate">Refund Processed</h3>
+<span class="text-[11px] font-medium text-slate-400">Yesterday</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">A refund of $42.00 for order #10293 has been initiated to your original payment method.</p>
+</div>
+</div>
+<!-- Promotion (All category) -->
+<div class="bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-xl p-4 flex gap-4 transition-all hover:bg-slate-50 dark:hover:bg-slate-800">
+<div class="size-12 shrink-0 bg-amber-50 dark:bg-amber-900/20 rounded-lg flex items-center justify-center text-amber-600">
+<span class="material-symbols-outlined">celebration</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-semibold text-slate-800 dark:text-slate-200 truncate">Flash Sale!</h3>
+<span class="text-[11px] font-medium text-slate-400">Yesterday</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Don't miss out! Get up to 50% off on electronics for the next 4 hours only.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="sticky bottom-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">home</span>
+<span class="text-[10px] font-bold text-slate-400 group-hover:text-primary uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">receipt_long</span>
+<span class="text-[10px] font-bold text-slate-400 group-hover:text-primary uppercase tracking-tighter">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-primary fill-current">notifications</span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-tighter">Alerts</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">person</span>
+<span class="text-[10px] font-bold text-slate-400 group-hover:text-primary uppercase tracking-tighter">Profile</span>
+</a>
+</nav>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>
